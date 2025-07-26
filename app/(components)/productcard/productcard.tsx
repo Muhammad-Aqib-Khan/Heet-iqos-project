@@ -13,7 +13,7 @@ interface ProductCardProps {
   price: number;
   cutPrice: number;
   basePath: string;
-  discount?: number; // ✅ discount value like 40 (for 40% OFF)
+  discount?: number;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
@@ -48,6 +48,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           <img
             src={image}
             alt={flavour}
+            loading="lazy"
             className="w-full h-full object-cover group-hover:scale-105 transition-transform"
           />
           {discount && (
@@ -69,16 +70,21 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
         <div className="flex items-center justify-center gap-2 mt-1">
           <button
+            aria-label="Decrease quantity"
             onClick={(e) => {
               e.preventDefault();
               setQuantity(Math.max(1, quantity - 1));
             }}
-            className="border px-2 py-1 rounded text-xs hover:bg-gray-200"
+            className={`border px-2 py-1 rounded text-xs ${
+              quantity === 1 ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-200"
+            }`}
+            disabled={quantity === 1}
           >
             -
           </button>
           <span className="text-sm">{quantity}</span>
           <button
+            aria-label="Increase quantity"
             onClick={(e) => {
               e.preventDefault();
               setQuantity(quantity + 1);
