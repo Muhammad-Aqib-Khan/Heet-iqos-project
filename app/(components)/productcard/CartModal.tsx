@@ -10,7 +10,7 @@ interface CartModalProps {
 }
 
 const CartModal: React.FC<CartModalProps> = ({ open, onClose }) => {
-  const { cartItems, removeFromCart } = useCart();
+  const { cartItems, removeFromCart, increaseQuantity, decreaseQuantity } = useCart();
   const router = useRouter();
 
   if (!open) return null;
@@ -43,7 +43,18 @@ const CartModal: React.FC<CartModalProps> = ({ open, onClose }) => {
                 <div className="flex-1">
                   <div className="font-semibold text-sm">{item.flavour}</div>
                   <div className="text-xs text-gray-500">{item.brand}</div>
-                  <div className="text-xs">Qty: {item.quantity}</div>
+                  <div className="flex items-center">
+                    <button
+                      onClick={() => decreaseQuantity(item.slug)}
+                      className="px-2 py-1 text-lg font-bold text-gray-600 hover:text-red-600"
+                      disabled={item.quantity <= 1}
+                    >-</button>
+                    <span className="mx-2">{item.quantity}</span>
+                    <button
+                      onClick={() => increaseQuantity(item.slug)}
+                      className="px-2 py-1 text-lg font-bold text-gray-600 hover:text-green-600"
+                    >+</button>
+                  </div>
                 </div>
                 <div className="font-bold text-teal-600 text-sm">AED {item.price}</div>
                 <button
