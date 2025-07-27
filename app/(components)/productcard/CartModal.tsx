@@ -26,14 +26,14 @@ const CartModal: React.FC<CartModalProps> = ({ open, onClose }) => {
     <>
       {/* BACKDROP */}
       <div
-        className="fixed inset-0 absolute inset-0 bg-black/50 backdrop-blur-sm z-40"
+        className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
         onClick={onClose}
-      ></div>
+      />
 
       {/* CART DRAWER */}
       <div className="fixed right-0 top-0 h-full w-full sm:w-[400px] bg-white z-50 shadow-xl overflow-y-auto">
         {/* HEADER */}
-        <div className="flex items-center justify-between p-4 border-b  ">
+        <div className="flex items-center justify-between p-4 border-b">
           <h2 className="text-lg font-bold hover:text-red-400">Shopping cart</h2>
           <button onClick={onClose}>
             <X className="w-5 h-5 text-gray-600 hover:text-black" />
@@ -60,12 +60,16 @@ const CartModal: React.FC<CartModalProps> = ({ open, onClose }) => {
                       onClick={() => decreaseQuantity(item.slug)}
                       className="px-2 py-1 text-sm rounded bg-gray-200 hover:bg-gray-300"
                       disabled={item.quantity <= 1}
-                    >-</button>
+                    >
+                      -
+                    </button>
                     <span className="px-3">{item.quantity}</span>
                     <button
                       onClick={() => increaseQuantity(item.slug)}
                       className="px-2 py-1 text-sm rounded bg-gray-200 hover:bg-gray-300"
-                    >+</button>
+                    >
+                      +
+                    </button>
                   </div>
                 </div>
                 <div className="text-sm font-bold">AED {item.price}</div>

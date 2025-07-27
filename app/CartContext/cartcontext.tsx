@@ -4,6 +4,8 @@ import React, { createContext, useContext, useState, ReactNode } from "react";
 
 // Define your cart item type
 export type CartItem = {
+  flavour: string | undefined;
+  brand: ReactNode;
   id: string;
   slug: string;
   name: string;
