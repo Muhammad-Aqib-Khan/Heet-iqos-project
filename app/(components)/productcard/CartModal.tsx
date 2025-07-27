@@ -2,7 +2,7 @@
 import React from "react";
 import { useCart } from "../../CartContext/cartcontext";
 import { useRouter } from "next/navigation";
-import { X } from "lucide-react"; // or any icon you prefer
+import { X } from "lucide-react";
 
 interface CartModalProps {
   open: boolean;
@@ -20,72 +20,92 @@ const CartModal: React.FC<CartModalProps> = ({ open, onClose }) => {
     onClose();
   };
 
-  const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
-      <div className="bg-white rounded-lg shadow-lg w-full max-w-md p-6 relative">
-        <button
-          className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
-          onClick={onClose}
-        >
-          ×
-        </button>
-        <h2 className="text-lg font-bold mb-4">Shopping Cart</h2>
-        {cartItems.length === 0 ? (
-          <p className="text-gray-500">Your cart is empty.</p>
-        ) : (
-          <div className="space-y-3 max-h-60 overflow-y-auto">
-            {cartItems.map((item) => (
-              <div key={item.slug} className="flex items-center gap-3 border-b pb-2">
-                <img src={item.image} alt={item.flavour} className="w-12 h-12 object-cover rounded" />
+    <>
+      {/* BACKDROP */}
+      <div
+        className="fixed inset-0 absolute inset-0 bg-black/50 backdrop-blur-sm z-40"
+        onClick={onClose}
+      ></div>
+
+      {/* CART DRAWER */}
+      <div className="fixed right-0 top-0 h-full w-full sm:w-[400px] bg-white z-50 shadow-xl overflow-y-auto">
+        {/* HEADER */}
+        <div className="flex items-center justify-between p-4 border-b  ">
+          <h2 className="text-lg font-bold hover:text-red-400">Shopping cart</h2>
+          <button onClick={onClose}>
+            <X className="w-5 h-5 text-gray-600 hover:text-black" />
+          </button>
+        </div>
+
+        {/* BODY */}
+        <div className="p-4 space-y-4">
+          {cartItems.length === 0 ? (
+            <p className="text-gray-500">Your cart is empty.</p>
+          ) : (
+            cartItems.map((item) => (
+              <div key={item.slug} className="flex items-start gap-4 border-b pb-4">
+                <img
+                  src={item.image}
+                  alt={item.flavour}
+                  className="w-14 h-14 object-cover rounded"
+                />
                 <div className="flex-1">
                   <div className="font-semibold text-sm">{item.flavour}</div>
                   <div className="text-xs text-gray-500">{item.brand}</div>
-                  <div className="flex items-center">
+                  <div className="flex items-center mt-1">
                     <button
                       onClick={() => decreaseQuantity(item.slug)}
-                      className="px-2 py-1 text-lg font-bold text-gray-600 hover:text-red-600"
+                      className="px-2 py-1 text-sm rounded bg-gray-200 hover:bg-gray-300"
                       disabled={item.quantity <= 1}
                     >-</button>
-                    <span className="mx-2">{item.quantity}</span>
+                    <span className="px-3">{item.quantity}</span>
                     <button
                       onClick={() => increaseQuantity(item.slug)}
-                      className="px-2 py-1 text-lg font-bold text-gray-600 hover:text-green-600"
+                      className="px-2 py-1 text-sm rounded bg-gray-200 hover:bg-gray-300"
                     >+</button>
                   </div>
                 </div>
-                <div className="font-bold text-teal-600 text-sm">AED {item.price}</div>
+                <div className="text-sm font-bold">AED {item.price}</div>
                 <button
                   onClick={() => removeFromCart(item.slug)}
-                  className="ml-2 text-gray-400 hover:text-red-600"
+                  className="text-gray-400 hover:text-red-600 ml-1"
                   aria-label="Remove item"
                 >
                   <X className="w-4 h-4" />
                 </button>
               </div>
-            ))}
+            ))
+          )}
+        </div>
+
+        {/* FOOTER */}
+        <div className="p-4 border-t mt-4">
+          <div className="flex justify-between font-medium mb-4 text-sm">
+            <span>Subtotal:</span>
+            <span>{totalPrice.toFixed(2)} AED</span>
           </div>
-        )}
-        <div className="flex gap-2 mt-6">
-          <button
-            className="flex-1 bg-blue-600 text-white rounded-md py-2 hover:bg-blue-700"
-            onClick={handleBuyNow}
-            disabled={cartItems.length === 0}
-          >
-            Buy Now
-          </button>
-          <button
-            className="flex-1 bg-green-600 text-white rounded-md py-2 hover:bg-green-700"
-            onClick={onClose}
-          >
-            Add More Flavours
-          </button>
+          <div className="flex flex-col gap-3">
+            <button
+              className="bg-black text-white py-2 rounded hover:bg-gray-900"
+              onClick={handleBuyNow}
+              disabled={cartItems.length === 0}
+            >
+              Checkout
+            </button>
+            <button
+              className="bg-gray-200 text-gray-700 py-2 rounded hover:bg-gray-300"
+              onClick={onClose}
+            >
+              Add More Flavours
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
-export default CartModal; 
+export default CartModal;

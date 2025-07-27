@@ -29,6 +29,81 @@ export default function Page() {
   return (
     <div className="px-2 sm:px-6 py-6">
       <BannerSlider banners={banners} interval={4000} sliderHeight="h-[600px]" />
+      <div>
+        {/* IQOS HEETS classic*/}
+        <InfoSection
+          heading1="HEETS Classic Kazakhstan"
+          heading2="Top Selling Flavours"
+          paragraphs={[
+            {
+              text: "Combining tradition with technology, IQOS Heets Classic from Kazakhstan is perfect for enjoying a rich and flavorful experience with tobacco heating devices. We offer eight distinct Heets Classic flavors, each pack containing 20 sticks, designed to be used with IQOS devices.",
+              color: "text-black-600",
+            },
+          ]}
+        />
+      </div>
+      <div className="bg-gray-200 ml-5 mr-5 rounded-lg">
+        <div className="bg-gray-100 px-4 py-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10 px-4 max-w-[1200px] mx-auto">
+            <ProductCard
+              slug="heets-amber-selection"
+              image="/classicKazakhstan/HEETS-Amber-Selection.png"
+              brand="IQOS TEREA Kazakhstan"
+              flavour="Heets Amber Selection"
+              price={89}
+              cutPrice={120}
+              basePath="/products"
+            />
+            <ProductCard
+              slug="heets-purple-wave"
+              image="/classicKazakhstan/heets-purple.png"
+              brand="HEETS Classic Kazakhstan"
+              flavour="Heets Purple Wave"
+              price={89}
+              cutPrice={120}
+              basePath="/products"
+            />
+            <ProductCard
+              slug="heets-silver-selection"
+              image="/classicKazakhstan/Heets-Silver-Selection.png"
+              brand="HEETS Classic Kazakhstan"
+              flavour="Heets Silver Selection"
+              price={89}
+              cutPrice={120}
+              basePath="/products"
+            />
+            <ProductCard
+              slug="heets-turquoise-selection"
+              image="/classicKazakhstan/heetturquoise.webp"
+              brand="HEETS Classic Kazakhstan"
+              flavour="Heets Turquoise Selection"
+              price={89}
+              cutPrice={120}
+              basePath="/products"
+            />
+            <ProductCard
+              slug="heets-yellow-selection"
+              image="/classicKazakhstan/Heets-Yellow-Selection.png"
+              brand="HEETS Classic Kazakhstan"
+              flavour="Heets Yellow Selection"
+              price={89}
+              cutPrice={120}
+              basePath="/products"
+            />
+          </div>
+
+          <div className="flex justify-center mt-8">
+            <Button
+              text="View More Flavours"
+              href="/iqostereakazakhstan"
+              className="bg-red-400 p-4 pl-6 pr-6 rounded-lg text-lg text-white hover:bg-red-600 hover:scale-110 transition duration-300"
+            />
+          </div>
+        </div>
+      </div>
+      <div>
+
+      </div>
 
       <div>
         <InfoSection
@@ -61,7 +136,7 @@ export default function Page() {
               brand="IQOS TEREA Kazakhstan"
               flavour="Silver"
               price={130}
-              cutPrice={220}
+              cutPrice={120}
               basePath="/products"
             />
             <ProductCard
@@ -70,7 +145,7 @@ export default function Page() {
               brand="IQOS TEREA Kazakhstan"
               flavour="Amber"
               price={130}
-              cutPrice={220}
+              cutPrice={120}
               basePath="/products"
             />
             <ProductCard
@@ -79,7 +154,7 @@ export default function Page() {
               brand="IQOS TEREA Kazakhstan"
               flavour="Bronze"
               price={130}
-              cutPrice={220}
+              cutPrice={120}
               basePath="/products"
             />
             <ProductCard
@@ -88,7 +163,7 @@ export default function Page() {
               brand="IQOS TEREA Kazakhstan"
               flavour="Purple"
               price={130}
-              cutPrice={220}
+              cutPrice={120}
               basePath="/products"
             />
           </div>
@@ -120,7 +195,7 @@ export default function Page() {
               brand="IQOS Indonesia"
               flavour="TEREA Apricity"
               price={130}
-              cutPrice={220}
+              cutPrice={120}
               basePath="/products"
             />
             <ProductCard
@@ -129,7 +204,7 @@ export default function Page() {
               brand="IQOS Indonesia"
               flavour="TEREA Yugen"
               price={130}
-              cutPrice={220}
+              cutPrice={120}
               basePath="/products"
             />
             <ProductCard
@@ -138,7 +213,7 @@ export default function Page() {
               brand="IQOS Indonesia"
               flavour="TEREA Sienna"
               price={130}
-              cutPrice={220}
+              cutPrice={120}
               basePath="/products"
             />
             <ProductCard
@@ -147,7 +222,7 @@ export default function Page() {
               brand="IQOS Indonesia"
               flavour="TEREA Blue"
               price={130}
-              cutPrice={220}
+              cutPrice={120}
               basePath="/products"
             />
           </div>
@@ -160,7 +235,7 @@ export default function Page() {
                 brand="IQOS Indonesia"
                 flavour="TEREA Purple"
                 price={130}
-                cutPrice={220}
+                cutPrice={120}
                 basePath="/products"
               />
             </div>
@@ -171,7 +246,7 @@ export default function Page() {
                 brand="IQOS Indonesia"
                 flavour="TEREA Purple"
                 price={130}
-                cutPrice={220}
+                cutPrice={120}
                 basePath="/products"
               />
             </div>
@@ -186,118 +261,7 @@ export default function Page() {
           </div>
         </div>
       </div>
-      <div>
-        {/* IQOS HEETS */}
-        <InfoSection
-          heading1="IQOS HEETS"
-          heading2="Top Selling Flavours"
-          paragraphs={[
-            {
-              text: "HEETS and IQOS welcome you to an extraordinary Journey into a new experience of tobacco and flavor.Satisifying , superior and sensory in every way. With a range",
-              color: "text-gray-600",
-            },
-            {
-              text: "of choices encompassing classic tobacco blends fresh new options for lovers of menthol tobacco and an exciting array of surprising new aromatic flavors,IQOS and ",
-              color: "text-gray-600",
-            },
-            {
-              text: "HEETS invite you to come and discover your Perfect Flavor",
-              color: "text-red-600",
-            },
-          ]}
-        />
-      </div>
-      <div className="bg-gray-200 ml-5 mr-5 rounded-lg">
-        <div className="bg-gray-100 px-4 py-8">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10 px-4 max-w-[1300px] mx-auto">
-            <ProductCard
-              slug="iqos-terea-summer-wave"
-              image="/classic/summerwave.webp"
-              brand="IQOS TEREA Kazakhstan"
-              flavour="Summer Wave"
-              price={130}
-              cutPrice={220}
-              basePath="/products"
-            />
-            <ProductCard
-              slug="iqos-terea-ptna"
-              image="/classic/ptna-jpeg.webp"
-              brand="IQOS TEREA Kazakhstan"
-              flavour="PTNA"
-              price={130}
-              cutPrice={220}
-              basePath="/products"
-            />
-            <ProductCard
-              slug="iqos-terea-menthol"
-              image="/classic/mentholclassic.webp"
-              brand="IQOS TEREA Kazakhstan"
-              flavour="Menthol"
-              price={130}
-              cutPrice={220}
-              basePath="/products"
-            />
-            <ProductCard
-              slug="iqos-terea-smooth-regular"
-              image="/classic/smoothregular.jpg"
-              brand="IQOS TEREA Kazakhstan"
-              flavour="Smooth Regular"
-              price={130}
-              cutPrice={220}
-              basePath="/products"
-            />
-            <ProductCard
-              slug="iqos-terea-japan-regular"
-              image="/classic/japanregularclassic.webp"
-              brand="IQOS TEREA Kazakhstan"
-              flavour="Japan Regular"
-              price={130}
-              cutPrice={220}
-              basePath="/products"
-            />
-            <ProductCard
-              slug="iqos-terea-jpan-classic"
-              image="/classic/jpanclassic.webp"
-              brand="IQOS TEREA Kazakhstan"
-              flavour="JPAN Classic"
-              price={130}
-              cutPrice={220}
-              basePath="/products"
-            />
-            <ProductCard
-              slug="iqos-terea-green-zing"
-              image="/classic/green-zing.webp"
-              brand="IQOS TEREA Kazakhstan"
-              flavour="Green Zing"
-              price={130}
-              cutPrice={220}
-              basePath="/products"
-            />
-            <ProductCard
-              slug="iqos-terea-yellow"
-              image="/classic/yellowclassic.webp"
-              brand="IQOS TEREA Kazakhstan"
-              flavour="Yellow"
-              price={130}
-              cutPrice={220}
-              basePath="/products"
-            />
 
-
-          </div>
-
-          <div className="flex justify-center mt-8">
-            <Button
-              text="View More Flavours"
-              href="/iqostereakazakhstan"
-              className="bg-red-400 p-4 pl-6 pr-6 rounded-lg text-lg text-white hover:bg-red-600 hover:scale-110 transition duration-300"
-            />
-          </div>
-        </div>
-      </div>
-      <div>
-
-      </div>
       {/* this is for iluma prime product  */}
       <div>
         <InfoSection
@@ -307,70 +271,70 @@ export default function Page() {
               text: "Designed to complement your favorite Terea Stick Flavors, IQOS ILUMA Prime Kits offer a convenient self-cleaning experience with a large variety of elegant colors. They combine incredible style and smart technology for a personalized experience for you.",
               color: "text-gray-600",
             },
-               ]}
+          ]}
         />
       </div>
       <div className="bg-gray-200 ml-5 mr-5 rounded-lg">
-  <div className="bg-gray-100 px-4 py-8">
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10 px-4 max-w-[1300px] mx-auto">
-      <ProductCard
-        slug="iqos-iluma-prime-bright"
-        image="/iluma/primebright.png"
-        brand="IQOS ILUMA Kazakhstan"
-        flavour="Prime Bright"
-        price={130}
-        cutPrice={220}
-        basePath="/products"
-      />
-      <ProductCard
-        slug="iqos-iluma-ilumaprime"
-        image="/iluma/ilumaprime.png"
-        brand="IQOS ILUMA Kazakhstan"
-        flavour="ILUMA Prime"
-        price={130}
-        cutPrice={220}
-        basePath="/products"
-      />
-      <ProductCard
-        slug="iqos-iluma-prime-we-side"
-        image="/iluma/prime-we-side.png"
-        brand="IQOS ILUMA Kazakhstan"
-        flavour="Prime WE Side"
-        price={130}
-        cutPrice={220}
-        basePath="/products"
-      />
-      <ProductCard
-        slug="iqos-iluma-prime-oasis"
-        image="/iluma/primeoasis.png"
-        brand="IQOS ILUMA Kazakhstan"
-        flavour="Prime Oasis"
-        price={130}
-        cutPrice={220}
-        basePath="/products"
-      />
-      <ProductCard
-        slug="iqos-iluma-prime-oasis-limited"
-        image="/iluma/prime-oasis-limited-edition.jpeg"
-        brand="IQOS ILUMA Kazakhstan"
-        flavour="Prime Oasis Limited"
-        price={130}
-        cutPrice={220}
-        basePath="/products"
-      />
-    </div>
+        <div className="bg-gray-100 px-4 py-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10 px-4 max-w-[1300px] mx-auto">
+            <ProductCard
+              slug="iqos-iluma-prime-bright"
+              image="/iluma/primebright.png"
+              brand="IQOS ILUMA Kazakhstan"
+              flavour="Prime Bright"
+              price={130}
+              cutPrice={120}
+              basePath="/products"
+            />
+            <ProductCard
+              slug="iqos-iluma-ilumaprime"
+              image="/iluma/ilumaprime.png"
+              brand="IQOS ILUMA Kazakhstan"
+              flavour="ILUMA Prime"
+              price={130}
+              cutPrice={120}
+              basePath="/products"
+            />
+            <ProductCard
+              slug="iqos-iluma-prime-we-side"
+              image="/iluma/prime-we-side.png"
+              brand="IQOS ILUMA Kazakhstan"
+              flavour="Prime WE Side"
+              price={130}
+              cutPrice={120}
+              basePath="/products"
+            />
+            <ProductCard
+              slug="iqos-iluma-prime-oasis"
+              image="/iluma/primeoasis.png"
+              brand="IQOS ILUMA Kazakhstan"
+              flavour="Prime Oasis"
+              price={130}
+              cutPrice={120}
+              basePath="/products"
+            />
+            <ProductCard
+              slug="iqos-iluma-prime-oasis-limited"
+              image="/iluma/prime-oasis-limited-edition.jpeg"
+              brand="IQOS ILUMA Kazakhstan"
+              flavour="Prime Oasis Limited"
+              price={130}
+              cutPrice={120}
+              basePath="/products"
+            />
+          </div>
 
-    <div className="flex justify-center mt-8">
-      <Button
-        text="View More Flavours"
-        href="/iqosilumakazakhstan"
-        className="bg-red-400 p-4 pl-6 pr-6 rounded-lg text-lg text-white hover:bg-red-600 hover:scale-110 transition duration-300"
-      />
-    </div>
-  </div>
-</div>
-{/* this is the iluma one and there  */}
-<div>
+          <div className="flex justify-center mt-8">
+            <Button
+              text="View More Flavours"
+              href="/iqosilumakazakhstan"
+              className="bg-red-400 p-4 pl-6 pr-6 rounded-lg text-lg text-white hover:bg-red-600 hover:scale-110 transition duration-300"
+            />
+          </div>
+        </div>
+      </div>
+      {/* this is the iluma one and there  */}
+      <div>
         <InfoSection
           heading1="IQOS ILUMA One"
         />
