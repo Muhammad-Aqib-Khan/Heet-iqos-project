@@ -21,11 +21,11 @@ const CartItem = () => {
       >
         <div className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 border-2 border-gray-300 rounded flex items-center justify-center">
           <div className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 border border-gray-400 rounded-sm"></div>
-          {totalQuantity > 0 && (
+        {totalQuantity > 0 && (
             <div className="absolute -top-1 -right-1 w-3 h-3 sm:w-4 sm:h-4 bg-red-600 rounded-full flex items-center justify-center text-xs font-bold text-white">
-              {totalQuantity}
+            {totalQuantity}
             </div>
-          )}
+        )}
         </div>
         <div className="text-right hidden sm:block">
           <div className="text-xs lg:text-sm font-medium text-gray-700">SHOPPING CART</div>

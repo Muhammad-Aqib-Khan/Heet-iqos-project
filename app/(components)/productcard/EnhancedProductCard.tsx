@@ -33,6 +33,10 @@ const EnhancedProductCard: React.FC<EnhancedProductCardProps> = ({
   const { addToCart } = useCart();
   const router = useRouter();
 
+  // Calculate discount percentage automatically
+  const calculatedDiscount = cutPrice > price ? Math.round(((cutPrice - price) / cutPrice) * 100) : 0;
+  const displayDiscount = discount || calculatedDiscount;
+
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     addToCart({ slug, image, brand, flavour, price, quantity });
@@ -65,9 +69,9 @@ const EnhancedProductCard: React.FC<EnhancedProductCardProps> = ({
             alt={flavour}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform"
           />
-          {discount && (
+          {displayDiscount > 0 && (
             <div className="absolute top-2 left-2 bg-red-600 text-white text-xs px-2 py-1 rounded font-bold">
-              {discount}% OFF
+              {displayDiscount}% OFF
             </div>
           )}
         </div>

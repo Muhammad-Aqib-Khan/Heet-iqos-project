@@ -63,7 +63,6 @@ export default function Page() {
               price={130}
               cutPrice={220}
               basePath="/products"
-              discount={40}
             />
             <ProductCard
               slug="iqos-terea-amber-kazakhstan"
@@ -73,7 +72,6 @@ export default function Page() {
               price={130}
               cutPrice={220}
               basePath="/products"
-              discount={40}
             />
             <ProductCard
               slug="iqos-terea-bronze-kazakhstan"
@@ -83,7 +81,6 @@ export default function Page() {
               price={130}
               cutPrice={220}
               basePath="/products"
-              discount={40}
             />
             <ProductCard
               slug="iqos-terea-purple-kazakhstan"
@@ -93,7 +90,6 @@ export default function Page() {
               price={130}
               cutPrice={220}
               basePath="/products"
-              discount={40}
             />
           </div>
 
@@ -126,7 +122,6 @@ export default function Page() {
               price={130}
               cutPrice={220}
               basePath="/products"
-              discount={40}
             />
             <ProductCard
               slug="iqos-terea-yugen-indonesia"
@@ -136,7 +131,6 @@ export default function Page() {
               price={130}
               cutPrice={220}
               basePath="/products"
-              discount={40}
             />
             <ProductCard
               slug="iqos-terea-sienna-indonesia"
@@ -146,7 +140,6 @@ export default function Page() {
               price={130}
               cutPrice={220}
               basePath="/products"
-              discount={40}
             />
             <ProductCard
               slug="iqos-terea-blue-indonesia"
@@ -156,7 +149,6 @@ export default function Page() {
               price={130}
               cutPrice={220}
               basePath="/products"
-              discount={40}
             />
           </div>
 
@@ -170,7 +162,6 @@ export default function Page() {
                 price={130}
                 cutPrice={220}
                 basePath="/products"
-                discount={40}
               />
             </div>
             <div className="w-full sm:w-[300px] lg:w-[270px]">
@@ -182,7 +173,6 @@ export default function Page() {
                 price={130}
                 cutPrice={220}
                 basePath="/products"
-                discount={40}
               />
             </div>
           </div>
@@ -197,6 +187,7 @@ export default function Page() {
         </div>
       </div>
       <div>
+        {/* IQOS HEETS */}
         <InfoSection
           heading1="IQOS HEETS"
           heading2="Top Selling Flavours"
@@ -227,7 +218,6 @@ export default function Page() {
               price={130}
               cutPrice={220}
               basePath="/products"
-              discount={40}
             />
             <ProductCard
               slug="iqos-terea-ptna"
@@ -237,7 +227,6 @@ export default function Page() {
               price={130}
               cutPrice={220}
               basePath="/products"
-              discount={40}
             />
             <ProductCard
               slug="iqos-terea-menthol"
@@ -247,7 +236,6 @@ export default function Page() {
               price={130}
               cutPrice={220}
               basePath="/products"
-              discount={40}
             />
             <ProductCard
               slug="iqos-terea-smooth-regular"
@@ -257,7 +245,6 @@ export default function Page() {
               price={130}
               cutPrice={220}
               basePath="/products"
-              discount={40}
             />
             <ProductCard
               slug="iqos-terea-japan-regular"
@@ -267,7 +254,6 @@ export default function Page() {
               price={130}
               cutPrice={220}
               basePath="/products"
-              discount={40}
             />
             <ProductCard
               slug="iqos-terea-jpan-classic"
@@ -277,7 +263,6 @@ export default function Page() {
               price={130}
               cutPrice={220}
               basePath="/products"
-              discount={40}
             />
             <ProductCard
               slug="iqos-terea-green-zing"
@@ -287,7 +272,6 @@ export default function Page() {
               price={130}
               cutPrice={220}
               basePath="/products"
-              discount={40}
             />
             <ProductCard
               slug="iqos-terea-yellow"
@@ -297,9 +281,8 @@ export default function Page() {
               price={130}
               cutPrice={220}
               basePath="/products"
-              discount={40}
             />
-            
+
 
           </div>
 
@@ -312,13 +295,92 @@ export default function Page() {
           </div>
         </div>
       </div>
-          <div>
-            
-          </div>
+      <div>
+
+      </div>
+      {/* this is for iluma prime product  */}
+      <div>
+        <InfoSection
+          heading1="IQOS ILUMA Prime"
+          paragraphs={[
+            {
+              text: "Designed to complement your favorite Terea Stick Flavors, IQOS ILUMA Prime Kits offer a convenient self-cleaning experience with a large variety of elegant colors. They combine incredible style and smart technology for a personalized experience for you.",
+              color: "text-gray-600",
+            },
+               ]}
+        />
+      </div>
+      <div className="bg-gray-200 ml-5 mr-5 rounded-lg">
+  <div className="bg-gray-100 px-4 py-8">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10 px-4 max-w-[1300px] mx-auto">
+      <ProductCard
+        slug="iqos-iluma-prime-bright"
+        image="/iluma/primebright.png"
+        brand="IQOS ILUMA Kazakhstan"
+        flavour="Prime Bright"
+        price={130}
+        cutPrice={220}
+        basePath="/products"
+      />
+      <ProductCard
+        slug="iqos-iluma-ilumaprime"
+        image="/iluma/ilumaprime.png"
+        brand="IQOS ILUMA Kazakhstan"
+        flavour="ILUMA Prime"
+        price={130}
+        cutPrice={220}
+        basePath="/products"
+      />
+      <ProductCard
+        slug="iqos-iluma-prime-we-side"
+        image="/iluma/prime-we-side.png"
+        brand="IQOS ILUMA Kazakhstan"
+        flavour="Prime WE Side"
+        price={130}
+        cutPrice={220}
+        basePath="/products"
+      />
+      <ProductCard
+        slug="iqos-iluma-prime-oasis"
+        image="/iluma/primeoasis.png"
+        brand="IQOS ILUMA Kazakhstan"
+        flavour="Prime Oasis"
+        price={130}
+        cutPrice={220}
+        basePath="/products"
+      />
+      <ProductCard
+        slug="iqos-iluma-prime-oasis-limited"
+        image="/iluma/prime-oasis-limited-edition.jpeg"
+        brand="IQOS ILUMA Kazakhstan"
+        flavour="Prime Oasis Limited"
+        price={130}
+        cutPrice={220}
+        basePath="/products"
+      />
+    </div>
+
+    <div className="flex justify-center mt-8">
+      <Button
+        text="View More Flavours"
+        href="/iqosilumakazakhstan"
+        className="bg-red-400 p-4 pl-6 pr-6 rounded-lg text-lg text-white hover:bg-red-600 hover:scale-110 transition duration-300"
+      />
+    </div>
+  </div>
+</div>
+{/* this is the iluma one and there  */}
+<div>
+        <InfoSection
+          heading1="IQOS ILUMA One"
+        />
+      </div>
+
+      {/* this section is where the text is starting  */}
 
       <section className="bg-gray-50 w-full max-w-5xl mx-auto my-8 shadow rounded px-4 sm:px-6 md:px-8 lg:px-12 py-6 sm:py-8 md:py-10">
-        <h1 className="text-xl md:text-3xl font-bold ">Getting Familiar With IQOS Device<br/>IQOS ILUMA ONE Device Dubai</h1>
-        <img src="/iluma/primeoasis.png"  alt="IQOS Device Banner" className="w-full h-auto rounded-lg my-6 object-fit object-cover max-h-64 sm:max-h-70 md:max-h-86" />
+        <h1 className="text-xl md:text-3xl font-bold ">Getting Familiar With IQOS Device<br />IQOS ILUMA ONE Device Dubai</h1>
+        <img src="/iluma/primeoasis.png" alt="IQOS Device Banner" className="w-full h-auto rounded-lg my-6 object-fit object-cover max-h-64 sm:max-h-70 md:max-h-86" />
         <p className="mb-4">IQOS or heated tobacco products tobacco are the game-changing solution to cut down all downsides of conventional methods of tobacco smoking. It’s time to bid farewell to an ashy smoking experience as you embrace the seamlessly designed IQOS devices Dubai for tobacco heat sticks. These devices are crafted to unlock the divine richness of nicotine vapors that combine authentic tobacco with tempting flavors.</p>
         <p className="mb-4">With IQOS device, tobacco isn’t “burnt” as in traditional tobacco cigarettes, which induces the release of a massive amount of toxins as you proceed with smoking. The tip of an ordinary tobacco cigarette reaches around 800°C by the time you take a puff,  whereas this risk is significantly reduced by 95% with IQOS Heets UAE. These smart devices heat the tobacco at 350 degrees Celsius without combustion. This introduces you to richer yet safer vapors.</p>
         <p className="mb-4">Say goodbye to all the potential hiccups with a healthier alternative to smoking cigarettes, smartly put together to refine your smoking experiences with a balanced equation of style and functionality.</p>
@@ -415,7 +477,7 @@ export default function Page() {
           <li>Friendly, expert support whenever you need help</li>
         </ul>
         <p className="mb-4">So what are you waiting for? Go to the next level and reward yourself with the finest mi-lusión smoking experience you deserve.</p>
-        <p className="mb-4">Contact us and order your favourite HEETS today.<br/>Ready to kick your tobacco game up a notch? Don't wait any longer. Your ideal HEETS sticks or IQOS device is only a message away.</p>
+        <p className="mb-4">Contact us and order your favourite HEETS today.<br />Ready to kick your tobacco game up a notch? Don't wait any longer. Your ideal HEETS sticks or IQOS device is only a message away.</p>
         <p className="mb-4">Here's why you'll enjoy shopping with us:</p>
         <ul className="list-disc pl-6 mb-4 space-y-1">
           <li>100% authentic, real HEETS and IQOS devices</li>

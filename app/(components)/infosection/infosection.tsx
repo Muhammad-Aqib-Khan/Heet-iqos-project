@@ -9,7 +9,7 @@ type Paragraph = {
 
 type InfoSectionProps = {
   heading1: string;
-  heading2: string;
+  heading2?: string;
   paragraphs?: Paragraph[]; // made optional
 };
 

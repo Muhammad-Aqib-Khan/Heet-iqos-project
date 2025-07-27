@@ -76,9 +76,9 @@ const Footer = () => {
         { 
           icon: Phone,
           label: "WHATSAPP:", 
-          value: "+971 55 716 3368", 
+          value: "+971 50 801 6258", 
           type: "phone",
-          href: "tel:+971557163368"
+          href: "tel:+971508016258"
         }
       ]
     }

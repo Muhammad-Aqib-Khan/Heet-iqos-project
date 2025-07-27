@@ -9,7 +9,7 @@ export default function FloatingButtons() {
       
       {/* WhatsApp Floating Button */}
       <Link
-        href="https://wa.me/9715080258"
+        href="https://wa.me/971508016258"
         passHref
         target="_blank"
         rel="noopener noreferrer"

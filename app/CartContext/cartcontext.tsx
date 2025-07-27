@@ -11,6 +11,7 @@ export interface CartItem {
 }
 
 interface CartContextType {
+  [x: string]: number;
   cartItems: CartItem[];
   addToCart: (item: CartItem) => void;
   removeFromCart: (slug: string) => void;
