@@ -38,7 +38,7 @@ const CartItem = () => {
         </div>
       </button>
 
-      <CartModal open={cartOpen} onClose={() => setCartOpen(false)} />
+      <CartModal isOpen={cartOpen} onClose={() => setCartOpen(false)} />
     </div>
   );
 };
