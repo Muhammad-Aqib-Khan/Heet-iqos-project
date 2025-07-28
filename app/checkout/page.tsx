@@ -1,158 +1,94 @@
 "use client";
 
 import { useCart } from "../CartContext/cartcontext";
-import { JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, useState } from "react";
+import React, { useState } from "react";
 
-const DUBAI_CITIES = [
-  "Dubai Marina",
-  "Deira",
-  "Jumeirah",
-  "Bur Dubai",
-  "Al Barsha",
-  "Business Bay",
-  "Downtown Dubai",
-  "Palm Jumeirah",
-  "Al Quoz",
-  "JLT",
-];
+export default function CheckoutPage() {
+  const { cartItems, getTotalPrice } = useCart();
+  const [shippingMethod, setShippingMethod] = useState<"standard" | "express">("standard");
 
-export default function Checkout() {
-  const { cart, totalPrice } = useCart();
-  const [formData, setFormData] = useState({
-    name: "",
-    city: "",
-    address: "",
-    postalCode: "",
-    phone: "",
-    flavour: "",
-  });
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const cartSummary = Array.isArray(cart)
-    ? cart
-        .map(
-          (item: { name: string; quantity?: number; price: number }) =>
-            `- ${item.name} x${item.quantity ?? 1} — ${item.price * (item.quantity ?? 1)} AED`
-        )
-        .join("%0A")
-    : "";
-
-  const calculatedTotal = typeof totalPrice === "number" && totalPrice < 200
-    ? totalPrice + 30
-    : totalPrice;
-  const deliveryNote = totalPrice < 200 ? "Delivery Charges: 30 AED (Orders below 200 AED)" : "Free Delivery (Orders above 200 AED)";
-
-  const handleSubmit = () => {
-    const message = `Order Details:%0AName: ${formData.name}%0ACity: ${formData.city}%0AAddress: ${formData.address}%0APostal Code: ${formData.postalCode}%0APhone: ${formData.phone}%0AFlavour: ${formData.flavour}%0A%0AItems:%0A${cartSummary}%0A%0ATotal: ${calculatedTotal} AED (%0A${deliveryNote})`;
-    const phoneNumber = "971508016258";
-    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank");
-  };
+  const shippingCost = shippingMethod === "standard" ? 30 : 50;
+  const total = getTotalPrice() + shippingCost;
 
   return (
-    <div className="max-w-xl mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Checkout</h1>
-
-      <div className="text-center mb-4 text-sm font-medium text-red-600 bg-yellow-100 py-2 px-4 rounded">
-        💵 Cash Only Payment Available
+    <div className="max-w-6xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+      {/* Billing Form */}
+      <div className="md:col-span-2 space-y-6">
+        <h2 className="text-xl font-semibold">Billing Details</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <input placeholder="First name" className="border p-2 rounded" required />
+          <input placeholder="Last name" className="border p-2 rounded" required />
+          <input placeholder="Country/Region" value="United Arab Emirates" disabled className="border p-2 rounded" />
+          <select className="border p-2 rounded">
+            <option>Select a city</option>
+            <option>Dubai</option>
+            <option>Abu Dhabi</option>
+            <option>Sharjah</option>
+          </select>
+          <input placeholder="Street address" className="border p-2 rounded col-span-2" required />
+          <input placeholder="Phone" className="border p-2 rounded" required />
+          <input placeholder="Email address" className="border p-2 rounded" required />
+        </div>
+        <textarea placeholder="Order notes (optional)" className="border p-2 rounded w-full" rows={3}></textarea>
       </div>
 
-      <div className="space-y-4">
-        <input
-          type="text"
-          name="name"
-          placeholder="Full Name"
-          value={formData.name}
-          onChange={handleInputChange}
-          className="w-full border rounded p-2"
-        />
+      {/* Order Summary */}
+      <div className="border rounded p-4 bg-gray-50 space-y-4">
+        <h2 className="text-lg font-semibold">Your Order</h2>
+        {cartItems.map((item) => (
+          <div key={item.slug} className="flex justify-between items-center border-b py-2 text-sm">
+            <span>{item.name} × {item.quantity}</span>
+            <span>AED {(item.price * item.quantity).toFixed(2)}</span>
+          </div>
+        ))}
 
-        <select
-          name="city"
-          value={formData.city}
-          onChange={handleInputChange}
-          className="w-full border rounded p-2"
-        >
-          <option value="">Select City</option>
-          {DUBAI_CITIES.map((city) => (
-            <option key={city} value={city}>
-              {city}
-            </option>
-          ))}
-        </select>
+        <div className="pt-2 space-y-2 text-sm">
+          <div className="flex justify-between">
+            <span>Subtotal</span>
+            <span>AED {getTotalPrice().toFixed(2)}</span>
+          </div>
 
-        <input
-          type="text"
-          name="address"
-          placeholder="Address"
-          value={formData.address}
-          onChange={handleInputChange}
-          className="w-full border rounded p-2"
-        />
+          {/* Shipping Options */}
+          <div className="space-y-1">
+            <label className="flex items-center gap-2">
+              <input
+                type="radio"
+                checked={shippingMethod === "standard"}
+                onChange={() => setShippingMethod("standard")}
+              />
+              Standard Shipping (30.00 AED)
+            </label>
+            <label className="flex items-center gap-2">
+              <input
+                type="radio"
+                checked={shippingMethod === "express"}
+                onChange={() => setShippingMethod("express")}
+              />
+              Express Shipping (50.00 AED)
+            </label>
+          </div>
 
-        <input
-          type="text"
-          name="postalCode"
-          placeholder="Postal Code"
-          value={formData.postalCode}
-          onChange={handleInputChange}
-          className="w-full border rounded p-2"
-        />
-
-        <input
-          type="text"
-          name="phone"
-          placeholder="Phone Number"
-          value={formData.phone}
-          onChange={handleInputChange}
-          className="w-full border rounded p-2"
-        />
-
-        <input
-          type="text"
-          name="flavour"
-          placeholder="Flavour"
-          value={formData.flavour}
-          onChange={handleInputChange}
-          className="w-full border rounded p-2"
-        />
-
-        <div className="text-center text-gray-700 text-sm">
-          {deliveryNote}
-        </div>
-
-        <div className="bg-gray-100 p-4 rounded">
-          <h2 className="text-lg font-semibold mb-2">Cart Items</h2>
-          <ul className="space-y-2">
-            {Array.isArray(cart) && cart.map(
-              (
-                item: { name: React.ReactNode; quantity?: number; price: number },
-                index: React.Key
-              ) => (
-                <li key={index} className="flex justify-between text-sm">
-                  <span>
-                    {item.name} x{item.quantity ?? 1}
-                  </span>
-                  <span>{item.price * (item.quantity ?? 1)} AED</span>
-                </li>
-              )
-            )}
-           
-          </ul>
-          <div className="mt-4 font-semibold text-right">
-            Total: {calculatedTotal} AED
+          <div className="flex justify-between font-bold text-base">
+            <span>Total</span>
+            <span>AED {total.toFixed(2)}</span>
           </div>
         </div>
 
-        <button
-          onClick={handleSubmit}
-          className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition"
-        >
-          Place Order via WhatsApp
+        {/* Payment */}
+        <div className="pt-4">
+          <h3 className="text-sm font-medium mb-2">Payment Method</h3>
+          <div className="space-y-2 text-sm">
+            <label className="flex gap-2 items-center">
+              <input type="radio" name="payment" defaultChecked /> Credit Card / Bank Transfer
+            </label>
+            <label className="flex gap-2 items-center">
+              <input type="radio" name="payment" /> Cash on Delivery
+            </label>
+          </div>
+        </div>
+
+        <button className="w-full bg-black text-white py-2 rounded hover:bg-gray-900 transition">
+          Place Order
         </button>
       </div>
     </div>
