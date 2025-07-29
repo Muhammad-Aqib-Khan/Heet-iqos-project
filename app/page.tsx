@@ -1,7 +1,7 @@
 import BannerSlider from "./(components)/BannerSlider/bannerslider";
 import Button from "./(components)/Button/Button";
 import InfoSection from "./(components)/infosection/infosection";
-import CartItem from "./(components)/productcard/cartitems";
+
 import ProductCard from "./(components)/productcard/productcard";
 
 export default function Page() {
@@ -29,6 +29,7 @@ export default function Page() {
   return (
     <div className="px-2 sm:px-6 py-6">
       <BannerSlider banners={banners} interval={4000} sliderHeight="h-[600px]" />
+      {/* Iqos HEETS classic is starting from here  */}
       <div>
         {/* IQOS HEETS classic*/}
         <InfoSection
@@ -92,6 +93,7 @@ export default function Page() {
             />
           </div>
 
+
           <div className="flex justify-center mt-8">
             <Button
               text="View More Flavours"
@@ -104,6 +106,104 @@ export default function Page() {
       <div>
 
       </div>
+      {/* IQOS HEETS Jpan is starting from here so don't be confused */}
+      <div>
+
+        <InfoSection
+          heading1="Heets Terea Japan"
+
+          paragraphs={[
+            {
+              text: "Discover TEREA Japan, made exclusively for IQOS ILUMA. Its ingenious SMARTCORE INDUCTION SYSTEM™ brings you improved draw, taste consistency from stick to stick, generous vapour and less lingering smell than ever before, according to most consumers.",
+              color: "text-black-600",
+            },
+            {
+              text: "IQOS ILUMA™ is designed to be used only with TEREA™ sticks.Do not use IQOS ILUMA™ and TEREA™ sticks with previous IQOS™ generations, as this may cause damage to your device.",
+              color: "text-red-400",
+            },
+          ]}
+        />
+
+      </div>
+      <div className="bg-gray-200 ml-5 mr-5 rounded-lg">
+        <div className="bg-gray-100 px-4 py-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10 px-4 max-w-[1200px] mx-auto">
+            <ProductCard
+              slug="terea-oasis-pearl"
+              image="/jpan/OasisPearl.jpg"
+              brand="TEREA UAE"
+              flavour="TEREA Oasis Pearl"
+              price={249}
+              cutPrice={500}
+              basePath="/products"
+            />
+            <ProductCard
+              slug="terea-menthol"
+              image="/jpan/MENTHOL.jpg"
+              brand="TEREA UAE"
+              flavour="TEREA Menthol"
+              price={249}
+              cutPrice={500}
+              basePath="/products"
+            />
+            <ProductCard
+              slug="terea-rich-regular"
+              image="/jpan/RichRegualr.png"
+              brand="TEREA UAE"
+              flavour="TEREA Rich Regular"
+              price={249}
+              cutPrice={500}
+              basePath="/products"
+            />
+            <ProductCard
+              slug="terea-yellow-menthol"
+              image="/jpan/YellowMenthol.jpg"
+              brand="TEREA UAE"
+              flavour="TEREA Yellow Menthol"
+              price={249}
+              cutPrice={500}
+              basePath="/products"
+            />
+            <ProductCard
+              slug="terea-regular-japan"
+              image="/jpan/Regularjpan.jpg"
+              brand="TEREA From Japan"
+              flavour="TEREA Regular From Japan"
+              price={249}
+              cutPrice={500}
+              basePath="/products"
+            />
+            <ProductCard
+              slug="terea-fusion-menthol"
+              image="/jpan/FusionMenthol.jpg"
+              brand="TEREA UAE"
+              flavour="TEREA Fusion Menthol"
+              price={249}
+              cutPrice={500}
+              basePath="/products"
+            />
+
+          </div>
+            <div className="flex justify-center mt-8">
+            <Button
+              text="View More Flavours"
+              href="/iqostereakazakhstan"
+              className="bg-red-400 p-4 pl-6 pr-6 rounded-lg text-lg text-white hover:bg-red-600 hover:scale-110 transition duration-300"
+            />
+          </div>
+        </div>
+      </div>
+{/* japan is ending here so next is starting from again */}
+
+
+
+
+
+
+
+
+
+
 
       <div>
         <InfoSection
@@ -218,7 +318,7 @@ export default function Page() {
             />
             <ProductCard
               slug="iqos-terea-blue-indonesia"
-              image="/indonesia/Terea-Blue.jpg"
+              image="/indonesia/jpam-Blue.jpg"
               brand="IQOS Indonesia"
               flavour="TEREA Blue"
               price={130}
