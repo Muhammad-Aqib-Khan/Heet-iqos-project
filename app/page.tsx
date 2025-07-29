@@ -108,93 +108,179 @@ export default function Page() {
       </div>
       {/* IQOS HEETS Jpan is starting from here so don't be confused */}
       <div>
+        <div>
 
-        <InfoSection
-          heading1="Heets Terea Japan"
+          <InfoSection
+            heading1="Heets Terea Japan"
 
-          paragraphs={[
-            {
-              text: "Discover TEREA Japan, made exclusively for IQOS ILUMA. Its ingenious SMARTCORE INDUCTION SYSTEM™ brings you improved draw, taste consistency from stick to stick, generous vapour and less lingering smell than ever before, according to most consumers.",
-              color: "text-black-600",
-            },
-            {
-              text: "IQOS ILUMA™ is designed to be used only with TEREA™ sticks.Do not use IQOS ILUMA™ and TEREA™ sticks with previous IQOS™ generations, as this may cause damage to your device.",
-              color: "text-red-400",
-            },
-          ]}
-        />
+            paragraphs={[
+              {
+                text: "Discover TEREA Japan, made exclusively for IQOS ILUMA. Its ingenious SMARTCORE INDUCTION SYSTEM™ brings you improved draw, taste consistency from stick to stick, generous vapour and less lingering smell than ever before, according to most consumers.",
+                color: "text-black-600",
+              },
+              {
+                text: "IQOS ILUMA™ is designed to be used only with TEREA™ sticks.Do not use IQOS ILUMA™ and TEREA™ sticks with previous IQOS™ generations, as this may cause damage to your device.",
+                color: "text-red-400",
+              },
+            ]}
+          />
 
-      </div>
-      <div className="bg-gray-200 ml-5 mr-5 rounded-lg">
-        <div className="bg-gray-100 px-4 py-8">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10 px-4 max-w-[1200px] mx-auto">
-            <ProductCard
-              slug="terea-oasis-pearl"
-              image="/jpan/OasisPearl.jpg"
-              brand="TEREA UAE"
-              flavour="TEREA Oasis Pearl"
-              price={249}
-              cutPrice={500}
-              basePath="/products"
-            />
-            <ProductCard
-              slug="terea-menthol"
-              image="/jpan/MENTHOL.jpg"
-              brand="TEREA UAE"
-              flavour="TEREA Menthol"
-              price={249}
-              cutPrice={500}
-              basePath="/products"
-            />
-            <ProductCard
-              slug="terea-rich-regular"
-              image="/jpan/RichRegualr.png"
-              brand="TEREA UAE"
-              flavour="TEREA Rich Regular"
-              price={249}
-              cutPrice={500}
-              basePath="/products"
-            />
-            <ProductCard
-              slug="terea-yellow-menthol"
-              image="/jpan/YellowMenthol.jpg"
-              brand="TEREA UAE"
-              flavour="TEREA Yellow Menthol"
-              price={249}
-              cutPrice={500}
-              basePath="/products"
-            />
-            <ProductCard
-              slug="terea-regular-japan"
-              image="/jpan/Regularjpan.jpg"
-              brand="TEREA From Japan"
-              flavour="TEREA Regular From Japan"
-              price={249}
-              cutPrice={500}
-              basePath="/products"
-            />
-            <ProductCard
-              slug="terea-fusion-menthol"
-              image="/jpan/FusionMenthol.jpg"
-              brand="TEREA UAE"
-              flavour="TEREA Fusion Menthol"
-              price={249}
-              cutPrice={500}
-              basePath="/products"
-            />
+        </div>
 
-          </div>
+        <div className="bg-gray-200 ml-5 mr-5 rounded-lg">
+          <div className="bg-gray-100 px-4 py-8">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10 px-4 max-w-[1200px] mx-auto">
+              <ProductCard
+                slug="terea-oasis-pearl"
+                image="/jpan/OasisPearl.jpg"
+                brand="TEREA UAE"
+                flavour="TEREA Oasis Pearl"
+                price={249}
+                cutPrice={500}
+                basePath="/products"
+              />
+              <ProductCard
+                slug="terea-menthol"
+                image="/jpan/MENTHOL.jpg"
+                brand="TEREA UAE"
+                flavour="TEREA Menthol"
+                price={249}
+                cutPrice={500}
+                basePath="/products"
+              />
+              <ProductCard
+                slug="terea-rich-regular"
+                image="/jpan/RichRegualr.png"
+                brand="TEREA UAE"
+                flavour="TEREA Rich Regular"
+                price={249}
+                cutPrice={500}
+                basePath="/products"
+              />
+              <ProductCard
+                slug="terea-yellow-menthol"
+                image="/jpan/YellowMenthol.jpg"
+                brand="TEREA UAE"
+                flavour="TEREA Yellow Menthol"
+                price={249}
+                cutPrice={500}
+                basePath="/products"
+              />
+              <ProductCard
+                slug="terea-regular-japan"
+                image="/jpan/Regularjpan.jpg"
+                brand="TEREA From Japan"
+                flavour="TEREA Regular From Japan"
+                price={249}
+                cutPrice={500}
+                basePath="/products"
+              />
+              <ProductCard
+                slug="terea-fusion-menthol"
+                image="/jpan/FusionMenthol.jpg"
+                brand="TEREA UAE"
+                flavour="TEREA Fusion Menthol"
+                price={249}
+                cutPrice={500}
+                basePath="/products"
+              />
+
+            </div>
             <div className="flex justify-center mt-8">
+              <Button
+                text="View More Flavours"
+                href="/iqostereakazakhstan"
+                className="bg-red-400 p-4 pl-6 pr-6 rounded-lg text-lg text-white hover:bg-red-600 hover:scale-110 transition duration-300"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* japan is ending here so next is starting from again */}
+      {/* and also INdonesia products are starting from here  */}
+      {/* Indonesia Products */}
+      <div>
+        <div className="max-w-screen-xl mx-auto text-white pt-4 shadow-md rounded-lg mb-2">
+          <InfoSection
+            heading1="IQOS TEREA FROM INDONESIA"
+            heading2="IQOS Top selling from Indonesia"
+          />
+        </div>
+
+        <div className="min-h-screen bg-teal-100 px-4 py-10">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10 px-4 max-w-[1300px] mx-auto">
+            <ProductCard
+              slug="iqos-terea-apricity-indonesia"
+              image="/indonesia/apricity-indonesia.webp"
+              brand="IQOS Indonesia"
+              flavour="TEREA Apricity"
+              price={130}
+              cutPrice={120}
+              basePath="/products"
+            />
+            <ProductCard
+              slug="iqos-terea-yugen-indonesia"
+              image="/indonesia/yugen-indonesia.webp"
+              brand="IQOS Indonesia"
+              flavour="TEREA Yugen"
+              price={130}
+              cutPrice={120}
+              basePath="/products"
+            />
+            <ProductCard
+              slug="iqos-terea-sienna-indonesia"
+              image="/indonesia/sienna.webp"
+              brand="IQOS Indonesia"
+              flavour="TEREA Sienna"
+              price={130}
+              cutPrice={120}
+              basePath="/products"
+            />
+            <ProductCard
+              slug="iqos-terea-blue-indonesia"
+              image="/indonesia/Terea-Blue.jpg"
+              brand="IQOS Indonesia"
+              flavour="TEREA Blue"
+              price={130}
+              cutPrice={120}
+              basePath="/products"
+            />
+          </div>
+
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mt-6 px-4">
+            <div className="w-full sm:w-[300px] lg:w-[270px]">
+              <ProductCard
+                slug="iqos-terea-purple-indonesia-1"
+                image="/indonesia/image.jpg"
+                brand="IQOS Indonesia"
+                flavour="TEREA Purple"
+                price={130}
+                cutPrice={120}
+                basePath="/products"
+              />
+            </div>
+            <div className="w-full sm:w-[300px] lg:w-[270px]">
+              <ProductCard
+                slug="iqos-terea-purple-indonesia-2"
+                image="/indonesia/green.jpeg"
+                brand="IQOS Indonesia"
+                flavour="TEREA Purple"
+                price={130}
+                cutPrice={120}
+                basePath="/products"
+              />
+            </div>
+          </div>
+
+          <div className="flex justify-center mt-8">
             <Button
               text="View More Flavours"
-              href="/iqostereakazakhstan"
-              className="bg-red-400 p-4 pl-6 pr-6 rounded-lg text-lg text-white hover:bg-red-600 hover:scale-110 transition duration-300"
+              href="/IqosHeetclassic"
+              className="bg-red-300 p-4 pl-6 pr-6 rounded-lg text-lg text-white hover:bg-red-600 hover:scale-110 transition duration-300"
             />
           </div>
         </div>
       </div>
-{/* japan is ending here so next is starting from again */}
-
 
 
 
@@ -278,89 +364,6 @@ export default function Page() {
         </div>
       </div>
 
-      {/* Indonesia Products */}
-      <div>
-        <div className="max-w-screen-xl mx-auto text-white pt-4 shadow-md rounded-lg mb-2">
-          <InfoSection
-            heading1="IQOS TEREA FROM INDONESIA"
-            heading2="IQOS Top selling from Indonesia"
-          />
-        </div>
-
-        <div className="min-h-screen bg-teal-100 px-4 py-10">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10 px-4 max-w-[1300px] mx-auto">
-            <ProductCard
-              slug="iqos-terea-apricity-indonesia"
-              image="/indonesia/apricity-indonesia.webp"
-              brand="IQOS Indonesia"
-              flavour="TEREA Apricity"
-              price={130}
-              cutPrice={120}
-              basePath="/products"
-            />
-            <ProductCard
-              slug="iqos-terea-yugen-indonesia"
-              image="/indonesia/yugen-indonesia.webp"
-              brand="IQOS Indonesia"
-              flavour="TEREA Yugen"
-              price={130}
-              cutPrice={120}
-              basePath="/products"
-            />
-            <ProductCard
-              slug="iqos-terea-sienna-indonesia"
-              image="/indonesia/sienna.webp"
-              brand="IQOS Indonesia"
-              flavour="TEREA Sienna"
-              price={130}
-              cutPrice={120}
-              basePath="/products"
-            />
-            <ProductCard
-              slug="iqos-terea-blue-indonesia"
-              image="/indonesia/jpam-Blue.jpg"
-              brand="IQOS Indonesia"
-              flavour="TEREA Blue"
-              price={130}
-              cutPrice={120}
-              basePath="/products"
-            />
-          </div>
-
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mt-6 px-4">
-            <div className="w-full sm:w-[300px] lg:w-[270px]">
-              <ProductCard
-                slug="iqos-terea-purple-indonesia-1"
-                image="/indonesia/image.jpg"
-                brand="IQOS Indonesia"
-                flavour="TEREA Purple"
-                price={130}
-                cutPrice={120}
-                basePath="/products"
-              />
-            </div>
-            <div className="w-full sm:w-[300px] lg:w-[270px]">
-              <ProductCard
-                slug="iqos-terea-purple-indonesia-2"
-                image="/indonesia/green.jpeg"
-                brand="IQOS Indonesia"
-                flavour="TEREA Purple"
-                price={130}
-                cutPrice={120}
-                basePath="/products"
-              />
-            </div>
-          </div>
-
-          <div className="flex justify-center mt-8">
-            <Button
-              text="View More Flavours"
-              href="/IqosHeetclassic"
-              className="bg-red-300 p-4 pl-6 pr-6 rounded-lg text-lg text-white hover:bg-red-600 hover:scale-110 transition duration-300"
-            />
-          </div>
-        </div>
-      </div>
 
       {/* this is for iluma prime product  */}
       <div>
@@ -378,59 +381,69 @@ export default function Page() {
         <div className="bg-gray-100 px-4 py-8">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10 px-4 max-w-[1300px] mx-auto">
             <ProductCard
-              slug="iqos-iluma-prime-bright"
-              image="/iluma/primebright.png"
-              brand="IQOS ILUMA Kazakhstan"
-              flavour="Prime Bright"
-              price={130}
-              cutPrice={120}
+              slug="iqos-iluma-obsidian-black"
+              image="/iluma/BlackDevice.png"
+              brand="IQOS ILUMA UAE"
+              flavour="ILUMA Prime Obsidian Black Device"
+              price={439}
+              cutPrice={1500}
               basePath="/products"
             />
             <ProductCard
-              slug="iqos-iluma-ilumaprime"
-              image="/iluma/ilumaprime.png"
-              brand="IQOS ILUMA Kazakhstan"
-              flavour="ILUMA Prime"
-              price={130}
-              cutPrice={120}
+              slug="iqos-iluma-gold-khaki"
+              image="/iluma/khaki.png"
+              brand="IQOS ILUMA UAE"
+              flavour="ILUMA Prime Gold Khaki Device"
+              price={439}
+              cutPrice={1500}
               basePath="/products"
             />
             <ProductCard
-              slug="iqos-iluma-prime-we-side"
-              image="/iluma/prime-we-side.png"
-              brand="IQOS ILUMA Kazakhstan"
-              flavour="Prime WE Side"
-              price={130}
-              cutPrice={120}
+              slug="iqos-iluma-jade-green"
+              image="/iluma/GreenDevice.png"
+              brand="IQOS ILUMA UAE"
+              flavour="ILUMA Prime Jade Green Device"
+              price={439}
+              cutPrice={1500}
               basePath="/products"
             />
             <ProductCard
-              slug="iqos-iluma-prime-oasis"
+              slug="iqos-iluma-neon-limited"
+              image="/iluma/PrimeNeonLimited.jpg"
+              brand="IQOS ILUMA UAE"
+              flavour="ILUMA Prime Neon Limited Edition"
+              price={599}
+              cutPrice={1299}
+              basePath="/products"
+            />
+            <ProductCard
+              slug="iqos-iluma-bronze-taupe"
+              image="/iluma/PrimeBronze.png"
+              brand="IQOS ILUMA UAE"
+              flavour="ILUMA Prime Bronze Taupe Device"
+              price={439}
+              cutPrice={1500}
+              basePath="/products"
+            />
+            <ProductCard
+              slug="iqos-iluma-oasis-limited"
               image="/iluma/primeoasis.png"
-              brand="IQOS ILUMA Kazakhstan"
-              flavour="Prime Oasis"
-              price={130}
-              cutPrice={120}
-              basePath="/products"
-            />
-            <ProductCard
-              slug="iqos-iluma-prime-oasis-limited"
-              image="/iluma/prime-oasis-limited-edition.jpeg"
-              brand="IQOS ILUMA Kazakhstan"
-              flavour="Prime Oasis Limited"
-              price={130}
-              cutPrice={120}
+              brand="IQOS ILUMA UAE"
+              flavour="ILUMA Prime Oasis Limited Edition"
+              price={599}
+              cutPrice={1299}
               basePath="/products"
             />
           </div>
 
           <div className="flex justify-center mt-8">
             <Button
-              text="View More Flavours"
-              href="/iqosilumakazakhstan"
+              text="View More Devices"
+              href="/iqosilumauae"
               className="bg-red-400 p-4 pl-6 pr-6 rounded-lg text-lg text-white hover:bg-red-600 hover:scale-110 transition duration-300"
             />
           </div>
+
         </div>
       </div>
       {/* this is the iluma one and there  */}
