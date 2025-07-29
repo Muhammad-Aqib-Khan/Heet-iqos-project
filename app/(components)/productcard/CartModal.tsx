@@ -1,7 +1,9 @@
-import { useCart } from "../../CartContext/cartcontext";
-import { X } from "lucide-react";
+"use client";
+
 import React from "react";
-import Link from "next/link";
+import { X } from "lucide-react";
+import { useCart } from "../../CartContext/cartcontext";
+import { useRouter } from "next/navigation";
 
 interface CartModalProps {
   isOpen: boolean;
@@ -9,83 +11,82 @@ interface CartModalProps {
 }
 
 const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose }) => {
-  const { cartItems, removeFromCart, increaseQuantity, decreaseQuantity, getTotalPrice } = useCart();
+  const { cartItems, removeFromCart, updateQuantity, totalPrice } = useCart();
+  const router = useRouter();
+
+  if (!isOpen) return null;
 
   return (
-    <div className={`fixed inset-0 z-50 ${isOpen ? "block" : "hidden"}`}>
-      {/* ✅ Background overlay (blurred) */}
-      <div
-        className="absolute inset-0 bg-black/30 backdrop-blur-sm z-0"
-        onClick={onClose}
-      ></div>
-
-      {/* ✅ Cart drawer (clear) */}
-      <div
-        className={`absolute top-0 right-0 h-full w-full sm:w-[90%] md:w-[400px] bg-white shadow-xl p-6 transition-transform duration-300 z-10 ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-bold">Shopping Cart</h2>
-          <button onClick={onClose}>
-            <X className="w-6 h-6 text-gray-500 hover:text-black" />
-          </button>
-        </div>
+    <div className="fixed inset-0 z-50 flex justify-end bg-black/50 backdrop-blur-sm">
+      <div className="w-full max-w-xs bg-white p-6 h-full shadow-lg relative">
+        <button
+          className="absolute top-4 right-4 text-gray-600 hover:text-black"
+          onClick={onClose}
+        >
+          <X size={20} />
+        </button>
+        <h2 className="text-xl font-bold mb-4">Shopping cart</h2>
 
         {cartItems.length === 0 ? (
           <p className="text-gray-500">Your cart is empty.</p>
         ) : (
-          <div className="space-y-4 max-h-[65vh] overflow-y-auto">
-            {cartItems.map((item) => (
-              <div key={item.slug} className="flex items-center gap-4 border-b pb-4">
-                <img src={item.image} alt={item.name} className="w-16 h-16 object-cover rounded" />
-                <div className="flex-1">
-                  <h4 className="font-semibold text-sm">{item.name}</h4>
-                  <p className="text-xs text-gray-500">{item.slug}</p>
-                  <div className="flex items-center gap-2 mt-1">
-                    <button
-                      className="px-2 border rounded text-xs"
-                      onClick={() => decreaseQuantity(item.slug)}
-                    >
-                      -
-                    </button>
-                    <span className="text-sm">{item.quantity}</span>
-                    <button
-                      className="px-2 border rounded text-xs"
-                      onClick={() => increaseQuantity(item.slug)}
-                    >
-                      +
-                    </button>
+          <>
+            <div className="overflow-y-auto space-y-4 max-h-[60vh] pr-1">
+              {cartItems.map((item) => (
+                <div key={item.slug} className="flex items-center space-x-3">
+                  <img
+                    src={item.image}
+                    alt={item.flavour}
+                    className="w-14 h-14 object-cover rounded"
+                  />
+                  <div className="flex-1 text-sm">
+                    <h4 className="font-medium">{item.flavour}</h4>
+                    <p className="text-gray-600">{item.brand}</p>
+                    <div className="flex items-center gap-2 mt-1">
+                      <button
+                        onClick={() => updateQuantity(item.slug, item.quantity - 1)}
+                        className="text-xs px-2 py-1 border rounded hover:bg-gray-100"
+                        disabled={item.quantity <= 1}
+                      >
+                        −
+                      </button>
+                      <span className="font-semibold">{item.quantity}</span>
+                      <button
+                        onClick={() => updateQuantity(item.slug, item.quantity + 1)}
+                        className="text-xs px-2 py-1 border rounded hover:bg-gray-100"
+                      >
+                        +
+                      </button>
+                    </div>
+                    <p className="font-semibold mt-1">
+                      AED {(item.price * item.quantity).toFixed(2)}
+                    </p>
                   </div>
-                </div>
-                <div className="flex flex-col items-end">
-                  <p className="text-sm font-bold">AED {(item.price * item.quantity).toFixed(2)}</p>
                   <button
+                    className="text-red-500 hover:text-red-700 text-xs"
                     onClick={() => removeFromCart(item.slug)}
-                    className="text-red-500 text-xs hover:underline mt-1"
                   >
                     Remove
                   </button>
                 </div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {cartItems.length > 0 && (
-          <div className="pt-4 mt-4 border-t space-y-4">
-            <p className="flex justify-between text-sm font-medium">
-              <span>Subtotal:</span>
-              <span>AED {getTotalPrice().toFixed(2)}</span>
-            </p>
-            <Link
-              href="/checkout"
-              onClick={onClose}
-              className="block w-full text-center bg-black text-white py-2 rounded hover:bg-gray-900 transition"
-            >
-              Checkout
-            </Link>
-          </div>
+              ))}
+            </div>
+            <div className="mt-4 border-t pt-4">
+              <p className="flex justify-between font-semibold">
+                <span>Subtotal:</span>
+                <span>AED {totalPrice.toFixed(2)}</span>
+              </p>
+              <button
+                onClick={() => {
+                  onClose();
+                  router.push("/checkout");
+                }}
+                className="mt-4 w-full bg-black text-white py-2 rounded hover:bg-gray-800"
+              >
+                Checkout
+              </button>
+            </div>
+          </>
         )}
       </div>
     </div>
