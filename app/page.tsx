@@ -452,6 +452,75 @@ export default function Page() {
           heading1="IQOS ILUMA One"
         />
       </div>
+      <div className="bg-gray-200 ml-5 mr-5 rounded-lg">
+        <div className="bg-gray-100 px-4 py-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10 px-4 max-w-[1300px] mx-auto">
+            <ProductCard
+              slug="iqos-iluma-one-pebble-grey"
+              image="/ilumaone/ilumapebble.jpg"
+              brand="IQOS ILUMA ONE UAE"
+              flavour="ILUMA ONE Pebble Grey Device"
+              price={249}
+              cutPrice={899}
+              basePath="/products"
+            />
+            <ProductCard
+              slug="iqos-iluma-one-pebble-beige"
+              image="/ilumaone/BEIGE.jpg"
+              brand="IQOS ILUMA ONE UAE"
+              flavour="ILUMA ONE Pebble Beige Device"
+              price={249}
+              cutPrice={899}
+              basePath="/products"
+            />
+            <ProductCard
+              slug="iqos-iluma-one-moss-green"
+              image="/ilumaone/Green.jpg"
+              brand="IQOS ILUMA ONE UAE"
+              flavour="ILUMA ONE Moss Green Device"
+              price={249}
+              cutPrice={899}
+              basePath="/products"
+            />
+            <ProductCard
+              slug="iqos-iluma-one-sunset-red"
+              image="/ilumaone/sunsetred.png"
+              brand="IQOS ILUMA ONE UAE"
+              flavour="ILUMA ONE Sunset Red Device"
+              price={249}
+              cutPrice={899}
+              basePath="/products"
+            />
+            <ProductCard
+              slug="iqos-iluma-one-we-limited"
+              image="/ilumaone/blue.png"
+              brand="IQOS ILUMA ONE UAE"
+              flavour="ILUMA ONE WE Limited Edition"
+              price={299}
+              cutPrice={899}
+              basePath="/products"
+            />
+            <ProductCard
+              slug="iqos-iluma-one-oasis-limited"
+              image="/ilumaone/orange.jpg"
+              brand="IQOS ILUMA ONE UAE"
+              flavour="ILUMA ONE Oasis Limited Edition"
+              price={299}
+              cutPrice={899}
+              basePath="/products"
+            />
+          </div>
+
+          <div className="flex justify-center mt-8">
+            <Button
+              text="View More Products"
+              href="/iqosilumaoneuae"
+              className="bg-red-400 p-4 pl-6 pr-6 rounded-lg text-lg text-white hover:bg-red-600 hover:scale-110 transition duration-300"
+            />
+          </div>
+
+        </div>
+      </div>
 
       {/* this section is where the text is starting  */}
 
