@@ -16,6 +16,7 @@ interface CartContextType {
   addToCart: (item: CartItem) => void;
   removeFromCart: (slug: string) => void;
   updateQuantity: (slug: string, quantity: number) => void;
+  clearCart: () => void; // ✅ Added
   totalPrice: number;
 }
 
@@ -26,7 +27,6 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
-  // Load from localStorage on mount
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
@@ -41,7 +41,6 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   }, []);
 
-  // Save to localStorage when cart changes
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(cartItems));
     const sum = cartItems.reduce((sum, i) => sum + i.price * i.quantity, 0);
@@ -71,9 +70,13 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     );
   };
 
+  const clearCart = () => {
+    setCartItems([]); // ✅ Clears cart
+  };
+
   return (
     <CartContext.Provider
-      value={{ cartItems, addToCart, removeFromCart, updateQuantity, totalPrice }}
+      value={{ cartItems, addToCart, removeFromCart, updateQuantity, clearCart, totalPrice }}
     >
       {children}
     </CartContext.Provider>

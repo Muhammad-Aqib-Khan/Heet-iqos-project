@@ -1,5 +1,3 @@
-// File: /app/api/submit-order/route.ts (or /pages/api/submit-order.ts if you're using pages directory)
-
 import { NextRequest, NextResponse } from 'next/server';
 
 const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwOMjR68fV8TGpFw-lWbczPF_5JGAjcTNTFT0hSWk_Z5y8rlsmdXMv7z1B2C6nQW-o/exec';
@@ -8,23 +6,25 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
 
-    const { Name, Phone, Email } = body;
+    const { phone, email } = body;
 
-    if (!Name || !Phone || !Email) {
-      return NextResponse.json({ error: 'Missing fields' }, { status: 400 });
+    if (!phone || !email) {
+      return NextResponse.json({ error: 'Missing phone or email' }, { status: 400 });
     }
 
+    // Send only phone and email
     const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ Name, Phone, Email })
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ phone, email }),
     });
 
-    const result = await response.json();
+    const contentType = response.headers.get('content-type') || "";
+    const result = contentType.includes("application/json")
+      ? await response.json()
+      : { result: await response.text() };
 
-    if (result?.result === 'success') {
+    if (result.result?.includes("success")) {
       return NextResponse.json({ status: 'ok' });
     } else {
       return NextResponse.json({ error: 'Google Sheet error', detail: result }, { status: 500 });

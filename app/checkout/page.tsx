@@ -2,10 +2,12 @@
 
 import React, { useState } from "react";
 import { useCart } from "../CartContext/cartcontext";
+import toast, { Toaster } from "react-hot-toast";
 
 const CheckoutPage = () => {
-  const { cartItems, totalPrice } = useCart();
-  const [formData, setFormData] = useState({
+  const { cartItems, totalPrice, clearCart } = useCart();
+
+  const initialForm = {
     firstName: "",
     lastName: "",
     country: "United Arab Emirates",
@@ -14,52 +16,42 @@ const CheckoutPage = () => {
     phone: "",
     email: "",
     orderNotes: "",
-  });
+  };
 
+  const [formData, setFormData] = useState(initialForm);
   const [payment, setPayment] = useState("bank");
 
   const DUBAI_CITIES = [
     "Dubai Marina", "Deira", "Jumeirah", "Bur Dubai", "Al Barsha",
     "Business Bay", "Downtown Dubai", "Palm Jumeirah", "Al Quoz", "JLT",
   ];
+
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
-  
+
+  const handlePaymentChange = (method: string) => {
+    setPayment(method);
+    if (method === "bank") {
+      toast("💳 Bank Transfer and card payment method is coming soon .");
+    }
+  };
 
   const calculatedTotal = totalPrice < 111 ? totalPrice + 30 : totalPrice;
   const shippingCharge = totalPrice < 111 ? 30 : 0;
 
   const handleSubmit = async () => {
-    const { firstName, lastName, phone, email, country, city, address, orderNotes } = formData;
-    const fullName = `${firstName} ${lastName}`.trim();
+    const fullName = `${formData.firstName} ${formData.lastName}`;
+    const { phone, email } = formData;
 
-    // 1. Save to Google Sheet
-    try {
-      await fetch("https://script.google.com/macros/s/AKfycbwOMjR68fV8TGpFw-lWbczPF_5JGAjcTNTFT0hSWk_Z5y8rlsmdXMv7z1B2C6nQW-o/exec", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          firstName,
-          lastName,
-          phone,
-          email,
-          country,
-          city,
-          address,
-          orderNotes
-        })
-      });
-    } catch (error) {
-      console.error("Failed to send data to Google Sheets", error);
-      alert("Order not submitted. Please try again.");
+    if (!formData.firstName || !formData.lastName || !formData.phone || !formData.email || !formData.city || !formData.address) {
+      toast.error("Please fill all required fields.");
       return;
     }
 
-    // 2. Send WhatsApp Message
     const whatsappNumber = "971508016258";
     const message = `
 🏍️ *New Order Received*
@@ -67,26 +59,40 @@ const CheckoutPage = () => {
 👤 Name: ${fullName}
 📞 Phone: ${phone}
 📧 Email: ${email}
-🌍 Country: ${country}
-🌆 City: ${city}
-🏠 Address: ${address}
-📝 Notes: ${orderNotes}
+🌍 Country: ${formData.country}
+🌆 City: ${formData.city}
+🏠 Address: ${formData.address}
+📝 Notes: ${formData.orderNotes}
 💳 Payment: ${payment === "bank" ? "Bank Transfer" : "Cash on Delivery"}
 
 📋 *Order Summary:*
-${cartItems.map(item => `* ${item.flavour} × ${item.quantity} = AED ${(item.price * item.quantity).toFixed(2)}`).join("\n")}
+${cartItems.map(item => `• ${item.flavour} × ${item.quantity} = AED ${(item.price * item.quantity).toFixed(2)}`).join("\n")}
 
 Subtotal: AED ${totalPrice.toFixed(2)}
 Shipping: AED ${shippingCharge.toFixed(2)}
-*Total: AED ${calculatedTotal.toFixed(2)}*
-    `.trim();
+*Total: AED ${calculatedTotal.toFixed(2)}*`.trim();
 
-    const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, "_blank");
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, "_blank");
+
+    try {
+      await fetch("/api/submit-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ phone, email }),
+      });
+
+      toast.success("✅ Order placed successfully!");
+      setFormData(initialForm);
+      clearCart();
+    } catch (err) {
+      console.error("Error:", err);
+      toast.error("❌ Failed to submit order.");
+    }
   };
 
   return (
     <div className="max-w-6xl mx-auto p-4 md:p-8 bg-gray-100 min-h-screen">
+      <Toaster />
       <div className="flex flex-col md:flex-row gap-6">
         <div className="w-full md:w-2/3 bg-white p-6 rounded-lg shadow border border-gray-200">
           <h2 className="text-xl font-bold mb-4">Billing Details</h2>
@@ -133,9 +139,6 @@ Shipping: AED ${shippingCharge.toFixed(2)}
               <span>Total</span>
               <span>AED {calculatedTotal.toFixed(2)}</span>
             </div>
-            {totalPrice < 111 && (
-              <p className="text-xs text-gray-600 mt-1">Add 111.00 AED to cart and get free shipping!</p>
-            )}
           </div>
         </div>
       </div>
@@ -144,21 +147,14 @@ Shipping: AED ${shippingCharge.toFixed(2)}
         <h2 className="text-xl font-bold mb-4">Payment Information</h2>
         <div className="space-y-3 text-sm">
           <label className="flex items-center gap-2">
-            <input type="radio" name="payment" value="bank" checked={payment === "bank"} onChange={() => setPayment("bank")} className="accent-blue-600" />
+            <input type="radio" name="payment" value="bank" checked={payment === "bank"} onChange={() => handlePaymentChange("bank")} className="accent-blue-600" />
             Credit Card Machine/Bank Transfer
           </label>
           <label className="flex items-center gap-2">
-            <input type="radio" name="payment" value="cod" checked={payment === "cod"} onChange={() => setPayment("cod")} className="accent-blue-600" />
+            <input type="radio" name="payment" value="cod" checked={payment === "cod"} onChange={() => handlePaymentChange("cod")} className="accent-blue-600" />
             Cash on delivery
           </label>
-          <p className="text-xs text-gray-600 mt-2">
-            Your personal data will be used to process your order, support your experience
-            throughout this website, and for other purposes described in our {" "}
-            <a href="#" className="underline">privacy policy</a>.
-          </p>
-          <button onClick={handleSubmit} className="mt-4 w-full bg-black text-white py-2 rounded hover:bg-gray-800">
-            Place Order
-          </button>
+          <button onClick={handleSubmit} className="mt-4 w-full bg-black text-white py-2 rounded hover:bg-gray-800">Place Order</button>
         </div>
       </div>
     </div>
