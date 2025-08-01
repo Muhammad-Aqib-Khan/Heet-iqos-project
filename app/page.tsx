@@ -132,7 +132,7 @@ export default function Page() {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10 px-4 max-w-[1200px] mx-auto">
               <ProductCard
                 slug="terea-oasis-pearl"
-                image="/jpan/OasisPearl.jpg"
+                image="/Jpan/OasisPearl.jpg"
                 brand="TEREA UAE"
                 flavour="TEREA Oasis Pearl"
                 price={249}
@@ -141,7 +141,7 @@ export default function Page() {
               />
               <ProductCard
                 slug="terea-menthol"
-                image="/jpan/MENTHOL.jpg"
+                image="/Jpan/MENTHOL.jpg"
                 brand="TEREA UAE"
                 flavour="TEREA Menthol"
                 price={249}
@@ -150,7 +150,7 @@ export default function Page() {
               />
               <ProductCard
                 slug="terea-rich-regular"
-                image="/jpan/RichRegualr.png"
+                image="/Jpan/RichRegualr.png"
                 brand="TEREA UAE"
                 flavour="TEREA Rich Regular"
                 price={249}
@@ -159,7 +159,7 @@ export default function Page() {
               />
               <ProductCard
                 slug="terea-yellow-menthol"
-                image="/jpan/YellowMenthol.jpg"
+                image="/Jpan/YellowMenthol.jpg"
                 brand="TEREA UAE"
                 flavour="TEREA Yellow Menthol"
                 price={249}
@@ -168,7 +168,7 @@ export default function Page() {
               />
               <ProductCard
                 slug="terea-regular-japan"
-                image="/jpan/Regularjpan.jpg"
+                image="/Jpan/Regularjpan.jpg"
                 brand="TEREA From Japan"
                 flavour="TEREA Regular From Japan"
                 price={249}
@@ -177,7 +177,7 @@ export default function Page() {
               />
               <ProductCard
                 slug="terea-fusion-menthol"
-                image="/jpan/FusionMenthol.jpg"
+                image="/Jpan/FusionMenthol.jpg"
                 brand="TEREA UAE"
                 flavour="TEREA Fusion Menthol"
                 price={249}
