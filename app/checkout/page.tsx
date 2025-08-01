@@ -22,11 +22,13 @@ const CheckoutPage = () => {
     "Dubai Marina", "Deira", "Jumeirah", "Bur Dubai", "Al Barsha",
     "Business Bay", "Downtown Dubai", "Palm Jumeirah", "Al Quoz", "JLT",
   ];
-
-  const handleInputChange = (e) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
+  
 
   const calculatedTotal = totalPrice < 111 ? totalPrice + 30 : totalPrice;
   const shippingCharge = totalPrice < 111 ? 30 : 0;
