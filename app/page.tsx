@@ -52,7 +52,7 @@ export default function Page() {
               brand="IQOS TEREA Kazakhstan"
               flavour="Heets Amber Selection"
               price={89}
-              cutPrice={220}
+              cutPrice={130}
               basePath="/products"
             />
             <ProductCard
@@ -61,7 +61,7 @@ export default function Page() {
               brand="HEETS Classic Kazakhstan"
               flavour="Heets Purple Wave"
               price={89}
-              cutPrice={220}
+              cutPrice={130}
               basePath="/products"
             />
             <ProductCard
@@ -70,7 +70,7 @@ export default function Page() {
               brand="HEETS Classic Kazakhstan"
               flavour="Heets Silver Selection"
               price={89}
-              cutPrice={220}
+              cutPrice={130}
               basePath="/products"
             />
             <ProductCard
@@ -79,7 +79,7 @@ export default function Page() {
               brand="HEETS Classic Kazakhstan"
               flavour="Heets Turquoise Selection"
               price={89}
-              cutPrice={220}
+              cutPrice={130}
               basePath="/products"
             />
             <ProductCard
@@ -88,7 +88,7 @@ export default function Page() {
               brand="HEETS Classic Kazakhstan"
               flavour="Heets Yellow Selection"
               price={89}
-              cutPrice={220}
+              cutPrice={130}
               basePath="/products"
             />
           </div>
