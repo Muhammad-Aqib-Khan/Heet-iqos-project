@@ -1,18 +1,9 @@
+// app/iqostereakazakhstan/[slug]/page.tsx
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { Metadata } from "next";
 
-interface Product {
-  slug: string;
-  name: string;
-  flavour: string;
-  description: string;
-  image: string;
-  price: number;
-  cutPrice: number;
-}
-
-const productData: Product[] = [
+// Mock product data
+const productData = [
   {
     slug: "heets-yellow-selection-uae",
     name: "Heets Yellow Selection",
@@ -33,19 +24,15 @@ const productData: Product[] = [
   },
 ];
 
-export async function generateStaticParams() {
-  return productData.map((product) => ({
-    slug: product.slug,
-  }));
-}
-
-interface Props {
+// Define expected prop types for this dynamic route
+type PageProps = {
   params: {
     slug: string;
   };
-}
+};
 
-export default function ProductDetailPage({ params }: Props) {
+// This is the correct component format for `[slug]` dynamic routes in Next.js App Router
+export default function ProductDetailPage({ params }: PageProps) {
   const product = productData.find((p) => p.slug === params.slug);
 
   if (!product) return notFound();
@@ -70,4 +57,11 @@ export default function ProductDetailPage({ params }: Props) {
       </p>
     </div>
   );
+}
+
+// Required for static generation of dynamic route
+export async function generateStaticParams() {
+  return productData.map((product) => ({
+    slug: product.slug,
+  }));
 }
