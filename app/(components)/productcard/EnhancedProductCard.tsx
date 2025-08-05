@@ -15,6 +15,7 @@ interface EnhancedProductCardProps {
   cutPrice: number;
   basePath: string;
   discount?: number;
+  
 }
 
 const EnhancedProductCard: React.FC<EnhancedProductCardProps> = ({

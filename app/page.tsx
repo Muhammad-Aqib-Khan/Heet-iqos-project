@@ -45,14 +45,14 @@ export default function Page() {
       </div>
       <div className="bg-gray-200 ml-5 mr-5 rounded-lg">
         <div className="bg-gray-100 px-4 py-8">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10 px-4 max-w-[1200px] mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10 px-4 max-w-[2200px] mx-auto">
             <ProductCard
               slug="heets-amber-selection"
               image="/classicKazakhstan/HEETS-Amber-Selection.png"
               brand="IQOS TEREA Kazakhstan"
               flavour="Heets Amber Selection"
               price={89}
-              cutPrice={120}
+              cutPrice={220}
               basePath="/products"
             />
             <ProductCard
@@ -61,7 +61,7 @@ export default function Page() {
               brand="HEETS Classic Kazakhstan"
               flavour="Heets Purple Wave"
               price={89}
-              cutPrice={120}
+              cutPrice={220}
               basePath="/products"
             />
             <ProductCard
@@ -70,7 +70,7 @@ export default function Page() {
               brand="HEETS Classic Kazakhstan"
               flavour="Heets Silver Selection"
               price={89}
-              cutPrice={120}
+              cutPrice={220}
               basePath="/products"
             />
             <ProductCard
@@ -79,7 +79,7 @@ export default function Page() {
               brand="HEETS Classic Kazakhstan"
               flavour="Heets Turquoise Selection"
               price={89}
-              cutPrice={120}
+              cutPrice={220}
               basePath="/products"
             />
             <ProductCard
@@ -88,7 +88,7 @@ export default function Page() {
               brand="HEETS Classic Kazakhstan"
               flavour="Heets Yellow Selection"
               price={89}
-              cutPrice={120}
+              cutPrice={220}
               basePath="/products"
             />
           </div>
@@ -129,7 +129,7 @@ export default function Page() {
 
         <div className="bg-gray-200 ml-5 mr-5 rounded-lg">
           <div className="bg-gray-100 px-4 py-8">
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10 px-4 max-w-[1200px] mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10 px-4 max-w-[2200px] mx-auto">
               <ProductCard
                 slug="terea-oasis-pearl"
                 image="/Jpan/OasisPearl.jpg"
@@ -215,7 +215,7 @@ export default function Page() {
               brand="IQOS Indonesia"
               flavour="TEREA Apricity"
               price={130}
-              cutPrice={120}
+              cutPrice={220}
               basePath="/products"
             />
             <ProductCard
@@ -224,7 +224,7 @@ export default function Page() {
               brand="IQOS Indonesia"
               flavour="TEREA Yugen"
               price={130}
-              cutPrice={120}
+              cutPrice={220}
               basePath="/products"
             />
             <ProductCard
@@ -233,7 +233,7 @@ export default function Page() {
               brand="IQOS Indonesia"
               flavour="TEREA Sienna"
               price={130}
-              cutPrice={120}
+              cutPrice={220}
               basePath="/products"
             />
             <ProductCard
@@ -242,7 +242,7 @@ export default function Page() {
               brand="IQOS Indonesia"
               flavour="TEREA Blue"
               price={130}
-              cutPrice={120}
+              cutPrice={220}
               basePath="/products"
             />
           </div>
@@ -255,7 +255,7 @@ export default function Page() {
                 brand="IQOS Indonesia"
                 flavour="TEREA Purple"
                 price={130}
-                cutPrice={120}
+                cutPrice={220}
                 basePath="/products"
               />
             </div>
@@ -264,9 +264,9 @@ export default function Page() {
                 slug="iqos-terea-purple-indonesia-2"
                 image="/indonesia/green.jpeg"
                 brand="IQOS Indonesia"
-                flavour="TEREA Purple"
+                flavour="TEREA Green"
                 price={130}
-                cutPrice={120}
+                cutPrice={220}
                 basePath="/products"
               />
             </div>
@@ -322,7 +322,7 @@ export default function Page() {
               brand="IQOS TEREA Kazakhstan"
               flavour="Silver"
               price={130}
-              cutPrice={120}
+              cutPrice={220}
               basePath="/products"
             />
             <ProductCard
@@ -331,7 +331,7 @@ export default function Page() {
               brand="IQOS TEREA Kazakhstan"
               flavour="Amber"
               price={130}
-              cutPrice={120}
+              cutPrice={220}
               basePath="/products"
             />
             <ProductCard
@@ -340,7 +340,7 @@ export default function Page() {
               brand="IQOS TEREA Kazakhstan"
               flavour="Bronze"
               price={130}
-              cutPrice={120}
+              cutPrice={220}
               basePath="/products"
             />
             <ProductCard
@@ -349,7 +349,7 @@ export default function Page() {
               brand="IQOS TEREA Kazakhstan"
               flavour="Purple"
               price={130}
-              cutPrice={120}
+              cutPrice={220}
               basePath="/products"
             />
           </div>
