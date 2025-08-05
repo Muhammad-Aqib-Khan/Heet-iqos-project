@@ -1,9 +1,18 @@
-// app/classic-kazakhstan/[slug]/page.tsx
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import { Metadata } from "next";
 
-// Fake static data (you can later replace with API/DB)
-const productData = [
+interface Product {
+  slug: string;
+  name: string;
+  flavour: string;
+  description: string;
+  image: string;
+  price: number;
+  cutPrice: number;
+}
+
+const productData: Product[] = [
   {
     slug: "heets-yellow-selection-uae",
     name: "Heets Yellow Selection",
@@ -22,17 +31,21 @@ const productData = [
     price: 89,
     cutPrice: 150,
   },
-  // Add more product objects here...
 ];
 
-// Generate paths at build time
 export async function generateStaticParams() {
   return productData.map((product) => ({
     slug: product.slug,
   }));
 }
 
-export default function ProductDetailPage({ params }: { params: { slug: string } }) {
+interface Props {
+  params: {
+    slug: string;
+  };
+}
+
+export default function ProductDetailPage({ params }: Props) {
   const product = productData.find((p) => p.slug === params.slug);
 
   if (!product) return notFound();
