@@ -1,25 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import { Search, ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import CartItem from "../productcard/cartitems";
-import products from "@/app/(components)/data/products";
 
 const Header = () => {
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
   const [isSecondaryMobileMenuOpen, setIsSecondaryMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
-
-  const handleSearch = (term) => {
-    setSearchTerm(term);
-    const filtered = products.filter((product) =>
-      product.title.toLowerCase().includes(term.toLowerCase()) ||
-      product.flavour.toLowerCase().includes(term.toLowerCase()) ||
-      product.brand.toLowerCase().includes(term.toLowerCase())
-    );
-    setSearchResults(term ? filtered : []);
-  };
 
   const navigationItems = [
     {
@@ -52,11 +38,6 @@ const Header = () => {
         { label: "LAMBDA I8", url: "/lambda-i8" }
       ]
     }
-  ];
-
-  const popularSearches = [
-    'IQOS 3', 'IQOS MULTI', 'IQOS 2.4', 'HEETS UAE',
-    'HEETS DUBAI', 'HEETS ABU DHABI', 'IQOS LIL', 'IQOS 3 DUO'
   ];
 
   return (
@@ -105,12 +86,6 @@ const Header = () => {
           </nav>
 
           <div className="flex items-center space-x-4">
-            <button
-              onClick={() => setIsSearchOpen(!isSearchOpen)}
-              className="p-1 text-gray-700 hover:text-black"
-            >
-              {isSearchOpen ? <X className="w-5 h-5" /> : <Search className="w-5 h-5" />}
-            </button>
             <CartItem />
             <button
               onClick={() => setIsSecondaryMobileMenuOpen(!isSecondaryMobileMenuOpen)}
@@ -120,33 +95,6 @@ const Header = () => {
             </button>
           </div>
         </div>
-
-        {isSearchOpen && (
-          <div className="max-w-7xl mx-auto px-4 pb-4 relative">
-            <input
-              type="text"
-              placeholder="Search for products..."
-              value={searchTerm}
-              onChange={(e) => handleSearch(e.target.value)}
-              className="border px-3 py-2 rounded w-full text-sm"
-              autoFocus
-            />
-            {searchResults.length > 0 && (
-              <div className="absolute bg-white border rounded mt-1 w-full max-h-64 overflow-y-auto z-50">
-                {searchResults.map((product) => (
-                  <a
-                    key={product.slug}
-                    href={`/products/${product.slug}`}
-                    className="block px-3 py-2 hover:bg-gray-100"
-                  >
-                    <p className="font-medium text-sm">{product.title}</p>
-                    <p className="text-xs text-gray-500">{product.brand} - {product.flavour}</p>
-                  </a>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
       </header>
     </div>
   );
