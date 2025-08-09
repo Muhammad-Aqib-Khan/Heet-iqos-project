@@ -82,7 +82,9 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <CartProvider>
           <Header />
-          {children}
+          <main className="pt-16 md:pt-20">
+            {children}
+          </main>
           <Footer />
         </CartProvider>
 
