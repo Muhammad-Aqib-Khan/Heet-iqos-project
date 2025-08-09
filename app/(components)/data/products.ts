@@ -6,7 +6,7 @@ const products = [
     flavour: "Amber Selection",
     price: 89,
     image: "/kazakhstan/amber.webp",
-    description: "Bold tobacco flavor with warm, woody notes."
+    description: "Experience the rich, full-bodied taste of Heets Amber Selection from Kazakhstan. This premium blend delivers bold tobacco flavors with warm, woody undertones that create a satisfying and sophisticated smoking experience. Crafted specifically for IQOS devices, each stick provides consistent flavor and quality you can trust."
   },
   {
     slug: "heets-purple-wave",
@@ -15,7 +15,7 @@ const products = [
     flavour: "Purple Wave",
     price: 89,
     image: "/kazakhstan/purple.webp",
-    description: "Mentholated tobacco with fruity berry undertones."
+    description: "Discover the refreshing blend of Heets Purple Wave, featuring a perfect balance of mentholated tobacco with delightful fruity berry undertones. This innovative flavor profile offers a cool, smooth experience that's both refreshing and satisfying, making it an ideal choice for those who enjoy a lighter, more aromatic smoking experience."
   },
   {
     slug: "heets-silver-selection",
@@ -24,7 +24,7 @@ const products = [
     flavour: "Silver Selection",
     price: 89,
     image: "/kazakhstan/silver.webp",
-    description: "Light tobacco blend with delicate and smooth aroma."
+    description: "Heets Silver Selection offers a refined and delicate smoking experience with its carefully crafted light tobacco blend. Featuring a smooth, subtle aroma that's never overwhelming, this premium selection is perfect for those who appreciate elegance and sophistication in their tobacco experience."
   },
   {
     slug: "heets-turquoise-selection",
@@ -33,7 +33,7 @@ const products = [
     flavour: "Turquoise Selection",
     price: 89,
     image: "/kazakhstan/turquoise.webp",
-    description: "Cooling menthol flavor with subtle tobacco blend."
+    description: "Experience the invigorating freshness of Heets Turquoise Selection, combining cooling menthol with a perfectly balanced subtle tobacco blend. This refreshing combination delivers a crisp, clean taste that awakens your senses while maintaining the authentic tobacco character you love."
   },
   {
     slug: "heets-yellow-selection",
@@ -42,7 +42,7 @@ const products = [
     flavour: "Yellow Selection",
     price: 89,
     image: "/kazakhstan/yellow.webp",
-    description: "Light and smooth tobacco experience with citrus notes."
+    description: "Heets Yellow Selection brings together the best of both worlds with its light, smooth tobacco base enhanced by bright citrus notes. This uplifting blend offers a refreshing twist on traditional tobacco, delivering a clean, vibrant experience that's perfect for any time of day."
   },
 
   {
@@ -52,7 +52,7 @@ const products = [
     flavour: "Oasis Pearl (Japan)",
     price: 249,
     image: "/Jpan/OasisPearl.jpg",
-    description: "Smooth menthol flavor with a refreshing twist."
+    description: "TEREA Oasis Pearl from Japan delivers an exceptional smooth menthol experience with a refreshing twist that sets it apart from traditional menthol products. Designed exclusively for IQOS ILUMA devices, this premium blend combines authentic Japanese craftsmanship with innovative heating technology for a consistently satisfying experience."
   },
   {
     slug: "terea-menthol",
@@ -61,7 +61,7 @@ const products = [
     flavour: "Menthol (Japan)",
     price: 249,
     image: "/Jpan/MENTHOL.jpg",
-    description: "Classic menthol for a crisp experience."
+    description: "Experience the pure essence of classic menthol with TEREA Menthol from Japan. This timeless blend delivers a crisp, clean experience that menthol enthusiasts will appreciate. Crafted with precision and designed for IQOS ILUMA devices, it offers the perfect balance of coolness and tobacco authenticity."
   },
   {
     slug: "terea-rich-regular",
@@ -70,7 +70,7 @@ const products = [
     flavour: "Rich Regular (Japan)",
     price: 249,
   image: "/Jpan/RichRegualr.png",
-    description: "Deep and full-bodied tobacco experience."
+    description: "TEREA Rich Regular from Japan offers a deep, full-bodied tobacco experience that satisfies even the most discerning tobacco connoisseurs. This premium blend showcases the rich complexity of carefully selected tobacco, delivering robust flavors and a satisfying intensity that defines true tobacco excellence."
   },
   {
     slug: "terea-yellow-menthol",
