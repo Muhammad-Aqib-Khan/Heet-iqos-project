@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://heetsiqosuae.store"),
   title: "IQOS HEETS Dubai | #1 Trusted Online HEETS Store in UAE",
   description:
-    "Buy authentic IQOS HEETS in Dubai and across the UAE from a trusted online store. Fast delivery and a wide range of HEETS and IQOS devices at affordable prices.",
+    "Shop authentic IQOS HEETS & devices with fast delivery across the UAE. 24/7 online store, secure payments, and premium service.",
   keywords: [
     "IQOS HEETS Dubai",
     "Buy HEETS Dubai",
@@ -40,11 +40,11 @@ export const metadata: Metadata = {
     url: "https://heetsiqosuae.store",
     title: "IQOS HEETS Dubai | #1 Trusted Online HEETS Store in UAE",
     description:
-      "Buy authentic IQOS HEETS in Dubai and across the UAE from a trusted online store. Fast delivery and a wide range of HEETS and IQOS devices at affordable prices.",
+      "Shop authentic IQOS HEETS & devices with fast delivery across the UAE. 24/7 online store, secure payments, and premium service.",
     siteName: "heetsiqosuae.store",
     images: [
       {
-        url: "/og/og-default.jpg", // ensure 1200x630 image exists at /public/og/og-default.jpg
+        url: "https://heetsiqosuae.store/og/og-default.jpg", // Make sure this image exists in /public/og/
         width: 1200,
         height: 630,
         alt: "IQOS HEETS in Dubai, UAE",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     title: "IQOS HEETS Dubai | Trusted HEETS Store in UAE",
     description:
       "Authentic IQOS HEETS & devices. Fast Dubai delivery. Shop UAE-wide.",
-    images: ["/og/og-default.jpg"],
+    images: ["https://heetsiqosuae.store/og/og-default.jpg"], // Absolute path
   },
   robots: {
     index: true,
@@ -64,23 +64,19 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" }, // modern SVG favicon - matches header logo
-      { url: "/favicon.ico" }, // fallback ICO favicon - matches header logo
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico" },
       { url: "/favicon_io/favicon-32x32.png", sizes: "32x32", type: "image/png" },
       { url: "/favicon_io/favicon-16x16.png", sizes: "16x16", type: "image/png" },
     ],
     apple: [
       { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
-      { url: "/favicon_io/apple-touch-icon.png", sizes: "180x180", type: "image/png" }
+      { url: "/favicon_io/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     ],
     shortcut: "/favicon.ico",
     other: [
-      {
-        rel: "mask-icon",
-        url: "/favicon.svg",
-        color: "#ec4899"
-      }
-    ]
+      { rel: "mask-icon", url: "/favicon.svg", color: "#ec4899" },
+    ],
   },
 };
 
@@ -94,12 +90,9 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <CartProvider>
           <Header />
-          <main className="pt-16 md:pt-20">
-            {children}
-          </main>
+          <main className="pt-16 md:pt-20">{children}</main>
           <Footer />
         </CartProvider>
-
         <FloatingButtons />
       </body>
     </html>
