@@ -57,9 +57,9 @@ const Footer = () => {
         { 
           icon: Mail,
           label: "EMAIL:", 
-          value: "INFO@IQOSHEETS-UAE.AE", 
+          value: "infoheetsiqosuaestore@gmail.com", 
           type: "email",
-          href: "mailto:INFO@IQOSHEETS-UAE.AE"
+          href: "mailto:infoheetsiqosuaestore@gmail.com"
         },
         { 
           icon: Clock,
