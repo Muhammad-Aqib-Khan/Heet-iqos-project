@@ -150,15 +150,7 @@ export default function page() {
                             cutPrice={500}
                             basePath="/products"
                         />
-                        <ProductCard
-                            slug="terea-menthol"
-                            image="/Jpan/Menthol.jpg"
-                            brand="TEREA UAE"
-                            flavour="TEREA Menthol"
-                            price={249}
-                            cutPrice={500}
-                            basePath="/products"
-                        />
+ 
                     </div>
 
                 </div>
