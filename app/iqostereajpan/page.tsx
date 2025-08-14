@@ -89,7 +89,7 @@ export default function page() {
                         {/* Missing products added here */}
                         <ProductCard
                             slug="terea-sun-pearl"
-                            image="/Jpan/SunPearl.jpg"
+                            image="/Jpan/sunpearl.jpg"
                             brand="TEREA UAE"
                             flavour="TEREA Sun Pearl"
                             price={249}
@@ -116,7 +116,7 @@ export default function page() {
                         />
                         <ProductCard
                             slug="terea-ruby-regular"
-                            image="/Jpan/Ruby.jpg"
+                            image="/Jpan/ruby.jpg"
                             brand="TEREA UAE"
                             flavour="TEREA Ruby Regular"
                             price={249}
