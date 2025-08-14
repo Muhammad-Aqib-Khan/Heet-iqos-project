@@ -64,13 +64,16 @@ const Header = () => {
   const listRef = useRef<HTMLDivElement | null>(null);
   const abortRef = useRef<AbortController | null>(null);
 
-  // lock scroll for mobile drawers
+  // Lock page scroll when either overlay (menu/search) is open
   useEffect(() => {
     const open = isMobileOpen || isSearchOpen;
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
+    if (open) {
+      const original = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = original || "";
+      };
+    }
   }, [isMobileOpen, isSearchOpen]);
 
   const showHint = useMemo(
@@ -118,6 +121,11 @@ const Header = () => {
 
   // keyboard navigation inside search
   const onSearchKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Escape") {
+      e.preventDefault();
+      setIsSearchOpen(false);
+      return;
+    }
     if (!results.length) return;
     if (e.key === "ArrowDown") {
       e.preventDefault();
@@ -144,34 +152,48 @@ const Header = () => {
     el?.scrollIntoView({ block: "nearest" });
   };
 
+  // Global Escape to close overlays
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsMobileOpen(false);
+        setIsSearchOpen(false);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
   return (
     <div className="w-full relative">
+      {/* Sticky header with iOS safe-area */}
       <header className="fixed top-0 left-0 right-0 z-50 border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="flex h-16 md:h-20 items-center justify-between gap-3">
+        <div className="pt-[env(safe-area-inset-top)]" />
+        <div className="mx-auto max-w-7xl px-3 sm:px-4">
+          <div className="flex h-14 sm:h-16 md:h-20 items-center justify-between gap-2 sm:gap-3">
             {/* Brand */}
-            <Link href="/" className="flex items-center gap-3 group">
-              <span className="relative inline-grid place-items-center w-10 h-10 rounded-2xl bg-gradient-to-r from-pink-500 to-red-500 shadow-sm">
+            <Link href="/" className="flex items-center gap-2 sm:gap-3 group min-w-0">
+              <span className="relative inline-grid place-items-center w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-gradient-to-r from-pink-500 to-red-500 shadow-sm shrink-0">
                 <span className="w-5 h-5 rounded-xl bg-white inline-grid place-items-center">
                   <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-pink-500 to-red-500" />
                 </span>
               </span>
-              <div className="flex flex-col">
-                <span className="text-lg md:text-xl font-extrabold tracking-tight text-gray-900">
+              <div className="flex flex-col min-w-0">
+                <span className="text-base sm:text-lg md:text-xl font-extrabold tracking-tight text-gray-900 truncate">
                   IQOS HEETS DUBAI
                 </span>
-                <span className="text-xs text-gray-500 -mt-0.5 group-hover:text-gray-700">
+                <span className="text-[10px] sm:text-xs text-gray-500 -mt-0.5 group-hover:text-gray-700 truncate">
                   Same-day Dubai • UAE-wide delivery
                 </span>
               </div>
             </Link>
 
             {/* Desktop nav */}
-            <nav className="hidden lg:flex items-center gap-2">
+            <nav className="hidden lg:flex items-center gap-1.5 xl:gap-2">
               {nav.map((section, i) => (
                 <div key={i} className="relative group">
                   <button
-                    className={`px-3 py-4 text-sm font-medium inline-flex items-center gap-1 rounded-md transition-colors ${
+                    className={`px-2.5 xl:px-3 py-3 text-sm font-medium inline-flex items-center gap-1 rounded-md transition-colors ${
                       section.isActive
                         ? "text-red-600"
                         : "text-gray-700 hover:text-gray-900"
@@ -179,14 +201,14 @@ const Header = () => {
                     aria-haspopup="true"
                     aria-expanded="false"
                   >
-                    {section.title}
-                    <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
+                    <span className="truncate max-w-[18ch] xl:max-w-none">{section.title}</span>
+                    <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180 shrink-0" />
                   </button>
 
                   {/* Mega dropdown */}
                   <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 absolute left-1/2 -translate-x-1/2 top-full pt-2">
-                    <div className="w-[640px] rounded-2xl border bg-white shadow-xl">
-                      <div className="grid grid-cols-2 gap-1 p-2">
+                    <div className="w-[92vw] max-w-[640px] rounded-2xl border bg-white shadow-xl">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 p-2">
                         {section.items.map((item, idx) => (
                           <Link
                             key={idx}
@@ -209,13 +231,13 @@ const Header = () => {
             </nav>
 
             {/* Actions */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1 sm:gap-2">
               <button
                 onClick={() => {
                   setIsSearchOpen(true);
                   setTimeout(() => inputRef.current?.focus(), 0);
                 }}
-                className="inline-flex items-center gap-2 rounded-xl border px-3 h-10 text-sm text-gray-700 hover:bg-gray-50"
+                className="inline-flex items-center gap-1.5 sm:gap-2 rounded-xl border px-2.5 sm:px-3 h-10 text-sm text-gray-700 hover:bg-gray-50 active:scale-[0.99]"
                 aria-label="Open search"
               >
                 <Search className="w-4 h-4" />
@@ -226,7 +248,7 @@ const Header = () => {
 
               <button
                 onClick={() => setIsMobileOpen((v) => !v)}
-                className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border text-gray-800"
+                className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border text-gray-800 active:scale-95"
                 aria-label="Toggle menu"
                 aria-expanded={isMobileOpen}
               >
@@ -236,61 +258,64 @@ const Header = () => {
           </div>
         </div>
 
-        {/* MOBILE MENU */}
+        {/* MOBILE MENU — same left-drawer style as SEARCH */}
         <div
-          className={`lg:hidden fixed inset-0 z-50 transition-opacity ${
+          className={`lg:hidden fixed inset-0 z-50 ${
             isMobileOpen ? "opacity-100" : "pointer-events-none opacity-0"
-          }`}
+          } transition-opacity`}
           aria-hidden={!isMobileOpen}
         >
+          {/* Backdrop */}
           <div
             className="absolute inset-0 bg-black/40"
             onClick={() => setIsMobileOpen(false)}
           />
+          {/* Left drawer */}
           <div
-            className={`absolute right-0 top-0 h-full w-[92%] max-w-sm bg-white shadow-2xl transition-transform duration-300 ease-out ${
-              isMobileOpen ? "translate-x-0" : "translate-x-full"
-            }`}
+            className={[
+              "absolute left-0 top-0 h-[100dvh] w-[92%] max-w-sm bg-white shadow-2xl",
+              "transition-transform duration-300 ease-out overscroll-contain flex flex-col",
+              isMobileOpen ? "translate-x-0" : "-translate-x-full",
+            ].join(" ")}
             role="dialog"
             aria-modal="true"
           >
-            <div className="flex items-center justify-between px-4 py-4 border-b">
-              <span className="font-semibold">Menu</span>
+            {/* Top bar - gradient to match search */}
+            <div className="flex items-center justify-between px-4 py-3 border-b bg-gradient-to-r from-rose-500 to-pink-500">
+              <span className="text-white font-semibold tracking-wide">MENU</span>
               <button
                 onClick={() => setIsMobileOpen(false)}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-md border"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-white/10 text-white"
                 aria-label="Close menu"
               >
                 <X />
               </button>
             </div>
 
-            <div className="px-2 py-3 overflow-y-auto h-[calc(100%-56px)]">
-              {/* Quick search button */}
-              <div className="px-2 pb-3">
-                <button
-                  onClick={() => {
-                    setIsSearchOpen(true);
-                    setIsMobileOpen(false);
-                    setTimeout(() => inputRef.current?.focus(), 0);
-                  }}
-                  className="w-full inline-flex items-center justify-center gap-2 rounded-xl border px-3 h-11 text-[15px] text-gray-800"
-                >
-                  <Search className="w-5 h-5" />
-                  Search products
-                </button>
-              </div>
+            {/* Quick search */}
+            <div className="px-3 pt-3">
+              <button
+                onClick={() => {
+                  setIsSearchOpen(true);
+                  setIsMobileOpen(false);
+                  setTimeout(() => inputRef.current?.focus(), 0);
+                }}
+                className="w-full inline-flex items-center justify-center gap-2 rounded-xl border px-3 h-11 text-[15px] text-gray-800 active:scale-[0.99]"
+              >
+                <Search className="w-5 h-5" />
+                Search products
+              </button>
+            </div>
 
-              {/* Accordions */}
+            {/* Accordions */}
+            <div className="px-2 sm:px-3 py-3 overflow-y-auto grow">
               {nav.map((section, i) => {
                 const open = activeAccordion === i;
                 return (
                   <div key={i} className="border-b">
                     <button
                       className={`w-full flex items-center justify-between py-4 px-2 text-left text-base ${
-                        section.isActive
-                          ? "text-red-600 font-semibold"
-                          : "text-gray-900"
+                        section.isActive ? "text-red-600 font-semibold" : "text-gray-900"
                       }`}
                       onClick={() =>
                         setActiveAccordion((prev) => (prev === i ? null : i))
@@ -298,7 +323,7 @@ const Header = () => {
                       aria-expanded={open}
                       aria-controls={`m-sec-${i}`}
                     >
-                      <span>{section.title}</span>
+                      <span className="pr-2">{section.title}</span>
                       <ChevronDown
                         className={`w-5 h-5 transition-transform ${
                           open ? "rotate-180" : ""
@@ -341,7 +366,7 @@ const Header = () => {
           </div>
         </div>
 
-        {/* SEARCH OVERLAY — left drawer on mobile, centered card on desktop */}
+        {/* SEARCH OVERLAY — left drawer on mobile, centered card on ≥sm */}
         <div
           className={`fixed inset-0 z-[60] ${
             isSearchOpen ? "opacity-100" : "pointer-events-none opacity-0"
@@ -354,8 +379,8 @@ const Header = () => {
           />
           <div
             className={`
-              absolute left-0 top-0 h-full w-[92%] max-w-sm bg-white shadow-2xl
-              transition-transform duration-300 ease-out
+              absolute left-0 top-0 h-[100dvh] w-[92%] max-w-sm bg-white shadow-2xl
+              transition-transform duration-300 ease-out overscroll-contain flex flex-col
               sm:left-1/2 sm:-translate-x-1/2 sm:top-10 sm:h-auto sm:max-w-lg sm:rounded-2xl sm:w-[92%]
               ${isSearchOpen ? "translate-x-0" : "-translate-x-full sm:translate-x-0 sm:opacity-0"}
             `}
@@ -367,18 +392,15 @@ const Header = () => {
               <span className="text-white font-semibold tracking-wide">CLOSE</span>
               <button
                 onClick={() => setIsSearchOpen(false)}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-white/10 text-white"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-white/10 text-white"
                 aria-label="Close search"
               >
                 <X />
               </button>
             </div>
 
-            {/* Header: Search keyword */}
-
-
             {/* Input */}
-            <div className="px-4 pt-3">
+            <div className="px-3 sm:px-4 pt-3">
               <div className="flex items-center gap-2 border rounded-xl px-3 h-12">
                 <Search className="w-5 h-5 text-gray-500" />
                 <input
@@ -448,7 +470,10 @@ const Header = () => {
 
             {/* Results */}
             {q.trim().length >= 2 && (
-              <div ref={listRef} className="max-h-[55vh] overflow-y-auto mt-2 border-t">
+              <div
+                ref={listRef}
+                className="mt-2 border-t overflow-y-auto max-h-[55vh] sm:max-h-[60dvh]"
+              >
                 {loading && (
                   <div className="p-4 space-y-2">
                     <div className="h-4 w-1/3 bg-gray-100 animate-pulse rounded" />
@@ -478,7 +503,7 @@ const Header = () => {
                         <img
                           src={item.image || "/placeholder.png"}
                           alt=""
-                          className="w-10 h-10 rounded-md object-cover border"
+                          className="w-11 h-11 rounded-md object-cover border shrink-0"
                           loading="lazy"
                         />
                         <div className="flex-1 min-w-0">
@@ -489,7 +514,7 @@ const Header = () => {
                             {item.price != null ? `AED ${item.price}` : ""}
                           </div>
                         </div>
-                        <ChevronDown className="rotate-[-90deg] w-4 h-4 text-gray-400" />
+                        <ChevronDown className="rotate-[-90deg] w-4 h-4 text-gray-400 shrink-0" />
                       </Link>
                     ))}
                   </div>
@@ -497,10 +522,13 @@ const Header = () => {
               </div>
             )}
 
-            <div className="h-4 sm:h-0" />
+            <div className="h-3 sm:h-0" />
           </div>
         </div>
       </header>
+
+      {/* Spacer so page content doesn’t hide under fixed header */}
+      <div className="h-14 sm:h-16 md:h-20" />
     </div>
   );
 };

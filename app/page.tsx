@@ -275,7 +275,7 @@ export default function Page() {
           <div className="flex justify-center mt-8">
             <Button
               text="View More Flavours"
-              href="/IqosHeetclassic"
+              href="/iqostereaindonesia"
               className="bg-red-300 p-4 pl-6 pr-6 rounded-lg text-lg text-white hover:bg-red-600 hover:scale-110 transition duration-300"
             />
           </div>
