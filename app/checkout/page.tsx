@@ -40,8 +40,8 @@ const CheckoutPage = () => {
     }
   };
 
-  const calculatedTotal = totalPrice < 111 ? totalPrice + 30 : totalPrice;
-  const shippingCharge = totalPrice < 111 ? 30 : 0;
+  const calculatedTotal = totalPrice < 250 ? totalPrice + 30 : totalPrice;
+  const shippingCharge = totalPrice < 250 ? 30 : 0;
 
   const handleSubmit = async () => {
     const fullName = `${formData.firstName} ${formData.lastName}`;

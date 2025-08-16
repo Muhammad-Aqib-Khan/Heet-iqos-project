@@ -391,7 +391,7 @@ export default function Page() {
             />
             <ProductCard
               slug="iqos-iluma-gold-khaki"
-              image="/iluma/khaki.png"
+              image="/iluma/Khaki.png"
               brand="IQOS ILUMA UAE"
               flavour="ILUMA Prime Gold Khaki Device"
               price={439}
