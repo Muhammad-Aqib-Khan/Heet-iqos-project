@@ -88,7 +88,7 @@ const Footer = () => {
     {
       icon: Package,
       title: "FREE DELIVERY",
-      subtitle: "AED 280+ ORDERS"
+      subtitle: "AED 250+ ORDERS"
     },
     {
       icon: RotateCcw,
