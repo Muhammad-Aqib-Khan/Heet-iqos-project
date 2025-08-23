@@ -276,7 +276,7 @@ export default function Page() {
             <Button
               text="View More Flavours"
               href="/iqostereaindonesia"
-              className="bg-red-300 p-4 pl-6 pr-6 rounded-lg text-lg text-white hover:bg-red-600 hover:scale-110 transition duration-300"
+              className="bg-red-400 p-4 pl-6 pr-6 rounded-lg text-lg text-white hover:bg-red-600 hover:scale-110 transition duration-300"
             />
           </div>
         </div>
@@ -318,7 +318,7 @@ export default function Page() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10 px-4 max-w-[1300px] mx-auto">
             <ProductCard
               slug="iqos-terea-silver-kazakhstan"
-              image="/silver1.png"
+              image="/indonesia/terea-silver.jpeg"
               brand="IQOS TEREA Kazakhstan"
               flavour="Silver"
               price={130}
